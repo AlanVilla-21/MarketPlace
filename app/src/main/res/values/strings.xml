@@ -8,7 +8,7 @@
     <string name = "text" >o</string>
     <string name = "botton_google">Continuar con Google</string>
     --login
-    <string name = "login_sutitle" > Inicia sesion</string>
+    <string name = "login_subtitle" > Inicia sesion</string>
     <string name = "login_subtitle_text">Ingresa tu correo electronico y contraseña para continuar</string>
     <string name = "password" >Contraseña</string>
     <string name = "sign_in">Iniciar sesion</string>
