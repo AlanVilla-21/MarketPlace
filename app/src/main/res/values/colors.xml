@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name = "light_gray">#E5E5E5</color>
+    <color name = "google_button_gray">F5F5F5</color>
 </resources>

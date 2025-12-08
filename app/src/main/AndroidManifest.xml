@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarketPlace">
         <activity
+            android:name=".RegisterUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".LoginUsuario"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
