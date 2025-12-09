@@ -1,11 +1,9 @@
 package com.example.marketplace
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.marketplace.databinding.ActivityRegisterUsuarioBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -15,6 +13,7 @@ class RegisterUsuario : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterUsuarioBinding
     private lateinit var auth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,25 +28,26 @@ class RegisterUsuario : AppCompatActivity() {
         }
 
         binding.btnGoogle.setOnClickListener {
-            //
+            // Luego Google
         }
-        }
-    fun crearUsuario (
-        correo:String,
-        password: String
-    ) {
-        auth.createUserWithEmailAndPassword(correo, password).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                // Mi usuario se creo correctamente
+    }
 
-            } else {
-                //Nuestro usuario no se logio
-                Toast.makeText(
-                    baseContext,
-                    "No pudo logearse el usuario.",
-                    Toast.LENGTH_LONG,
-                ).show()
+    private fun crearUsuario(correo:String, password: String) {
+        auth.createUserWithEmailAndPassword(correo, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // ✅ Si se crea bien, ir al login
+                    val intentIrALogin = Intent(this, LoginUsuario::class.java)
+                    startActivity(intentIrALogin)
+                    finish()
+                } else {
+                    Toast.makeText(
+                        baseContext,
+                        "No pudo crearse el usuario.",
+                        Toast.LENGTH_LONG,
+                    ).show()
+                }
             }
-        }
     }
-    }
+}
+

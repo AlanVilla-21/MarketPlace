@@ -10,7 +10,7 @@ android {
         version = release(36)
     }
 
-    buildFeatures {
+     buildFeatures {
         viewBinding = true
     }
 
@@ -49,9 +49,10 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
-    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-auth:23.1.0") // This works
+    implementation(libs.firebase.auth.ktx)
+    implementation(platform(libs.firebase.bom))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    //
 }
