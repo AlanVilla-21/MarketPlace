@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity (){
     private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate (savedInstanceState: Bundle?) {
-    super.onCreate(saved)InstancceState)
+    super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
     drawerLayout= findViewById(R.id.drawerLayout)
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity (){
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
         } else{
-            super.OnBackPressed()
+            super.onBackPressed()
         }
     }
 }
