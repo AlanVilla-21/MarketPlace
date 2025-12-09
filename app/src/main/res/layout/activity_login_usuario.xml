@@ -98,7 +98,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/sign_in"
+        android:text="@string/botton_sign_in"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:background="@color/black"
@@ -164,5 +164,6 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:gravity="center"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
