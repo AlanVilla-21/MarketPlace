@@ -45,7 +45,6 @@ class LoginUsuario : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-                    // ✅ Login correcto → ir al Home
                     val intentUsuarioLogueado =  Intent(this, HomeUsuario::class.java)
                     startActivity(intentUsuarioLogueado)
                     finish()
@@ -58,4 +57,5 @@ class LoginUsuario : AppCompatActivity() {
                 }
             }
     }
+
 }

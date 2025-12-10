@@ -19,6 +19,7 @@ class RegisterUsuario : AppCompatActivity() {
 
         binding = ActivityRegisterUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         auth = Firebase.auth
 
         binding.btnContinuar.setOnClickListener {
@@ -27,8 +28,9 @@ class RegisterUsuario : AppCompatActivity() {
             crearUsuario(correo, password)
         }
 
-        binding.btnGoogle.setOnClickListener {
-            // Luego Google
+        binding.btnYaTengoCuenta.setOnClickListener {
+            val intentIrALogin = Intent(this, LoginUsuario::class.java)
+            startActivity(intentIrALogin)
         }
     }
 
@@ -36,9 +38,8 @@ class RegisterUsuario : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // ✅ Si se crea bien, ir al login
-                    val intentIrALogin = Intent(this, LoginUsuario::class.java)
-                    startActivity(intentIrALogin)
+                    val intentUsuarioNuevo = Intent(this, HomeUsuario::class.java)
+                    startActivity(intentUsuarioNuevo)
                     finish()
                 } else {
                     Toast.makeText(

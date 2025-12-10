@@ -6,7 +6,7 @@
     <string name="hint_email">correoelectronico@upb.com</string>
     <string name="botton_continue">Continuar</string>
     <string name="textOr">o</string>
-    <string name="botton_google">Continuar con Google</string>
+    <string name="botton_signIn">Ya tengo una cuenta</string>
     <string name="password">Contraseña</string>
     <!-- login -->
     <string name="login_subtitle"> Inicia sesion</string>
