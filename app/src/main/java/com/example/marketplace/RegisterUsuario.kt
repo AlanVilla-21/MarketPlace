@@ -44,7 +44,7 @@ class RegisterUsuario : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         baseContext,
-                        "No pudo crearse el usuario.",
+                        "El usuario no pudo ser creado.",
                         Toast.LENGTH_LONG,
                     ).show()
                 }

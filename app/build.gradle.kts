@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
         id("com.google.gms.google-services")
+    //implementacion paso 1
     }
 
 android {
@@ -50,6 +51,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
     implementation("com.google.firebase:firebase-auth:23.1.0")
+    //paso 2
     implementation(libs.firebase.auth.ktx)
     implementation(platform(libs.firebase.bom))
     testImplementation(libs.junit)
