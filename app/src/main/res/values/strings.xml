@@ -13,11 +13,13 @@
     <string name="login_subtitle_text">Ingresa tu correo electronico y contraseña para continuar</string>
     <string name="password_sign_in">Contraseña</string>
     <string name="botton_sign_in">Iniciar sesion</string>
-    
-    <string name="vender_producto" > Vender un producto </string>
-    <string name="mis_compras" > Mis compras </string>
-    <string name="perfil" > Perfil </string>
-    <string name="mi_historial" > Mi historial </string>
+    <!-- perfil -->
+    <string name="vender_producto"> Vender un producto </string>
+    <string name="mis_compras"> Mis compras </string>
+    <string name="perfil"> Perfil </string>
+    <string name="mi_historial"> Mi historial </string>
+    <string name="inicio"> Inicio </string>
+    <string name="agragar_carrito"> Agregar al carrito </string>
 
 
 </resources>

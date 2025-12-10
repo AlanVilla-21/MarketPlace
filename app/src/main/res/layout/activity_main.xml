@@ -54,7 +54,7 @@
         android:textColor="@android:color/black"
         android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
-       app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintStart_toStartOf="@id/topBar"/>
 
         <View
@@ -63,57 +63,40 @@
             android:layout_height="1dp"
             android:background="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomNav"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <LinearLayout
-            android:id="@+id/bottomNav"
+            android:id="@+id/BotonesAbajo"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="64dp"
             android:orientation="horizontal"
             android:gravity="center"
-            android:weightSum="3"
+            android:background="@color/white"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <LinearLayout
-                android:id="@+id/tabHome"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView
+                android:id="@+id/imgCasa"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_weight="1"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/iconHome"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/carrito2"/>
-            </LinearLayout>
-        <LinearLayout
-            android:id="@+id/tabCart"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+                android:src="@drawable/casita"
+                android:contentDescription="@string/inicio"/>
             <ImageView
-                android:id="@+id/iconCart"
+                android:id="@+id/imgCarrito"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@mipmap/ic_launcher"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tabProfile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+                android:layout_weight="1"
+                android:src="@drawable/carrito1"
+                android:contentDescription="@string/agragar_carrito"/>
             <ImageView
-                android:id="@+id/iconProfile"
+                android:id="@+id/imgPerfil"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@mipmap/ic_launcher"/>
-        </LinearLayout>
+                android:layout_weight="1"
+                android:src="@drawable/foto_perfil"
+                android:contentDescription="@string/perfil"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
