@@ -16,8 +16,10 @@
         android:theme="@style/Base.Theme.MarketPlace">
 
         <activity android:name=".HomeUsuario" />
-
+        <activity android:name=".VenderProductoActivity" />
+        <activity android:name=".PerfilUsuario" />
         <activity android:name=".RegisterUsuario" />
+
 
         <activity
             android:name=".LoginUsuario"

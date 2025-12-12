@@ -63,36 +63,36 @@
             android:layout_height="1dp"
             android:background="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/BotonesAbajo"/>
         <LinearLayout
             android:id="@+id/BotonesAbajo"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="@color/white"
+            android:background="@android:color/white"
             android:paddingHorizontal="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <ImageView
                 android:id="@+id/imgCasa"
-                android:layout_width="24dp"
+                android:layout_width="0dp"
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:src="@drawable/casita"
                 android:contentDescription="@string/inicio"/>
             <ImageView
                 android:id="@+id/imgCarrito"
-                android:layout_width="24dp"
+                android:layout_width="0dp"
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:src="@drawable/carrito1"
                 android:contentDescription="@string/agragar_carrito"/>
             <ImageView
                 android:id="@+id/imgPerfil"
-                android:layout_width="24dp"
+                android:layout_width="0dp"
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:src="@drawable/foto_perfil"
@@ -107,5 +107,6 @@
        android:layout_width="280dp"
        android:layout_height="match_parent"
        android:layout_gravity="start"/>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

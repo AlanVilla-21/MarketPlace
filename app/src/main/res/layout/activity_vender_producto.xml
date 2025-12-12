@@ -35,7 +35,7 @@
             android:id="@+id/txtTituloVender"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Producto"
+            android:text=" Vender producto"
             android:textSize="16sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -172,12 +172,5 @@
             android:src="@drawable/foto_perfil"
             android:contentDescription="@string/perfil"/>
     </LinearLayout>
-
-
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

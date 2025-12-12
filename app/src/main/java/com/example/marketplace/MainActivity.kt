@@ -1,29 +1,32 @@
+package com.example.marketplace
 import android.os.Bundle
-import android.widget.TextView
-import androidx.core.view.GravityCompat
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
-import com.example.marketplace.R
+import androidx.core.view.GravityCompat
+import com.example.marketplace.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity (){
-    private lateinit var drawerLayout: DrawerLayout
+class MainActivity : AppCompatActivity() {
 
-    override fun onCreate (savedInstanceState: Bundle?) {
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        drawerLayout= findViewById(R.id.drawerLayout)
-        val txtMenu: TextView = findViewById(R.id.txtMenu)
-
-        txtMenu.setOnClickListener{
-            drawerLayout.openDrawer(GravityCompat.START)
+        binding.txtMenu.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
         }
+
+        // Si quieres luego clicks de abajo:
+        // binding.imgCasa.setOnClickListener { ... }
+        // binding.imgCarrito.setOnClickListener { ... }
+        // binding.imgPerfil.setOnClickListener { ... }
     }
 
     override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else{
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
             super.onBackPressed()
         }
     }
