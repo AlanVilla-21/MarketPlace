@@ -15,6 +15,8 @@ class categorias : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+            //shared preferences o room(implementacion)
+            //base de datos si queremos implementar maximo hasta el viernes
         }
     }
 }
