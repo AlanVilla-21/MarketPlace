@@ -2,16 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     kotlin("plugin.serialization") version "1.9.0"
-    id("com.google.devtools.ksp")
+    id("kotlin-kapt")
     id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.prograiii.myapplication"
+    namespace = "com.example.marketplace"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.prograiii.myapplication"
+        applicationId = "com.example.marketplace"
         minSdk = 29
         targetSdk = 36
         versionCode = 1
@@ -49,18 +49,17 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    //Implementacion de Serializacion paso 2
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
     implementation("androidx.room:room-runtime:2.8.3")
     implementation("androidx.room:room-ktx:2.8.3")
-    ksp("androidx.room:room-compiler:2.8.3")
+    kapt("androidx.room:room-compiler:2.8.3")
+
+    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+    implementation("com.google.firebase:firebase-auth")
 
 
-    implementation("androidx.room:room-runtime:2.8.3")
-    implementation("androidx.room:room-ktx:2.8.3")
-
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
