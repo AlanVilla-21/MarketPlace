@@ -6,31 +6,31 @@
     <string name="hint_email">correoelectronico@upb.com</string>
     <string name="botton_continue">Continuar</string>
     <string name="textOr">o</string>
-    <string name="botton_google">Continuar con Google</string>
+    <string name="botton_signIn">Ya tengo una cuenta</string>
     <string name="password">Contraseña</string>
     <!-- login -->
     <string name="login_subtitle"> Inicia sesion</string>
     <string name="login_subtitle_text">Ingresa tu correo electronico y contraseña para continuar</string>
     <string name="password_sign_in">Contraseña</string>
     <string name="botton_sign_in">Iniciar sesion</string>
-    <!-- perfil -->
-    <string name="vender_producto"> Vender un producto </string>
-    <string name="mis_compras"> Mis compras </string>
-    <string name="perfil"> Perfil </string>
-    <string name="mi_historial"> Mi historial </string>
-    <string name="inicio"> Inicio </string>
-    <string name="agragar_carrito"> Agregar al carrito </string>
-    <!-- Categoria -->
-    <string name="categoria1">Vehiculos</string>
-    <string name="categoria2">Ropa de mujer</string>
-    <string name="categoria3">Electronica</string>
-    <string name="categoria4">Muebles</string>
-    <string name="categoria5">Ropa de varon</string>
-    <string name="categoria6">Alquileres</string>
-    <string name="categoria7">Instrumentos</string>
-    <string name="categoria8">Ropa de bebe</string>
-    <string name="categoria9">Deportes</string>
-    <string name="categoria">Categorias</string>
+    
+    <string name="vender_producto" > Vender un producto </string>
+    <string name="mis_compras" > Mis compras </string>
+    <string name="perfil" > Perfil </string>
+    <string name="mi_historial" > Mi historial </string>
+
+
+    <string name="categoria1" > Vehiculos" </string>
+    <string name="categoria2" > Ropa de Mujer</string>
+    <string name="categoria3" > Electronica</string>
+    <string name="categoria4" > Muebles</string>
+    <string name="categoria5" > Ropa de Varon</string>
+    <string name="categoria6" > Alquileres</string>
+    <string name="categoria7" > Instrumentos</string>
+    <string name="categoria8" > Ropa de Bebe</string>
+    <string name="categoria9" > Deportes</string>
+
+
 
 
 </resources>
