@@ -81,15 +81,13 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_weight="1"
-                android:src="@drawable/casita"
-                android:contentDescription="@string/inicio"/>
+                android:src="@drawable/casita" />
             <ImageView
                 android:id="@+id/imgCarrito"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_weight="1"
-                android:src="@drawable/carrito1"
-                android:contentDescription="@string/agragar_carrito"/>
+                android:src="@drawable/carrito1" />
             <ImageView
                 android:id="@+id/imgPerfil"
                 android:layout_width="24dp"
