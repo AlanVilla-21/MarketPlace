@@ -32,37 +32,37 @@ class categorias : AppCompatActivity() {
             val intentVehiculos = Intent(this, Vehiculos::class.java)
             startActivity(intentVehiculos)
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentRopaMujer = Intent(this, Vehiculos::class.java)
+        binding.btnRopaDeMujer.setOnClickListener {
+            val intentRopaMujer = Intent(this, RopaMujer::class.java)
             startActivity(intentRopaMujer)
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentElectronica = Intent(this, Vehiculos::class.java)
+        binding.btnElectronica.setOnClickListener {
+            val intentElectronica = Intent(this, Electronica::class.java)
             startActivity(intentElectronica)
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentMuebles = Intent(this, Vehiculos::class.java)
+        binding.btnMuebles.setOnClickListener {
+            val intentMuebles = Intent(this, Muebles::class.java)
             startActivity(intentMuebles)
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentAlquileres = Intent(this, Vehiculos::class.java)
-            startActivity(intentAlquileres)
+        binding.btnRopaDeVaron.setOnClickListener {
+            val intentRopaVaron = Intent(this, RopaVaron::class.java)
+            startActivity(intentRopaVaron)
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentRopadevaron = Intent(this, Vehiculos::class.java)
-            startActivity(intentRopadevaron)
+        binding.btnAlquileres.setOnClickListener {
+            val intentAlquileres = Intent(this, Alquileres::class.java)
+            startActivity(intentAlquileres)
 
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentinstrumentos = Intent(this, Vehiculos::class.java)
+        binding.btnInstrumentos.setOnClickListener {
+            val intentinstrumentos = Intent(this, Instrumentos::class.java)
             startActivity(intentinstrumentos)
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentRopadebebe = Intent(this, Vehiculos::class.java)
+        binding.btnRopaDeBebe.setOnClickListener {
+            val intentRopadebebe = Intent(this, RopaBebe::class.java)
             startActivity(intentRopadebebe)
         }
-        binding.btnVehiculos.setOnClickListener {
-            val intentDeportes = Intent(this, Vehiculos::class.java)
+        binding.btndeportes.setOnClickListener {
+            val intentDeportes = Intent(this, Deportes::class.java)
             startActivity(intentDeportes)
         }
     }

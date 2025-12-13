@@ -15,7 +15,31 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.MarketPlace">
         <activity
+            android:name=".Deportes"
+            android:exported="false" />
+        <activity
+            android:name=".RopaBebe"
+            android:exported="false" />
+        <activity
+            android:name=".Instrumentos"
+            android:exported="false" />
+        <activity
+            android:name=".Alquileres"
+            android:exported="false" />
+        <activity
+            android:name=".RopaVaron"
+            android:exported="false" />
+        <activity
+            android:name=".Muebles"
+            android:exported="false" />
+        <activity
+            android:name=".Electronica"
+            android:exported="false" />
+        <activity
             android:name=".Vehiculos"
+            android:exported="false" />
+        <activity
+            android:name=".RopaMujer"
             android:exported="false" />
         <activity
             android:name=".categorias"
