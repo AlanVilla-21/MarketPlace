@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="@color/black"
-        android:paddingStart="16dp"
+        android:paddingStart ="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,264 +33,177 @@
         android:textStyle="bold"
         android:textColor="@color/white" />
     </LinearLayout>
-
+    <!-- Contenedor-->
     <LinearLayout
-        android:id="@+id/filaCategorias"
+        android:id="@+id/contenedor"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingHorizontal="24dp"
-        android:paddingTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintBottom_toTopOf="@id/BotonesAbajo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-    <!-- Vehiculos -->
+    <!-- Fila1-->
+    <LinearLayout
+        android:id="@+id/fila1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnVehiculos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/categoria1"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/vehiculos"
+            android:textSize="13dp"/>
+        <Button
+            android:id="@+id/btnRopa_de_mujer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/categoria2"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/mujer"
+            android:textSize="13dp"/>
+        <Button
+            android:id="@+id/btnElectronica"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/categoria3"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/electronica"
+            android:textSize="13dp"/>
+        </LinearLayout>
+        <!-- Fila 2-->
         <LinearLayout
-            android:id="@+id/Fila1"
+            android:id="@+id/fila2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingVertical="16dp">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/vehiculos"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/categoria1"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-    <!-- ropa mujer -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingVertical="16dp">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/mujer"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/categoria2"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <!-- Electronica -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingVertical="16dp">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/electronica"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/categoria3"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-    </LinearLayout>
-    <!-- fila 2 -->
-    <LinearLayout
-        android:id="@+id/Fila2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <!-- Muebles -->
-        <LinearLayout
+        <Button
+            android:id="@+id/btnMuebles"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/categoria4"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="16dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/sofa" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/categoria4"
-                android:textSize="12sp" />
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/sofa"
+            android:textSize="13dp"/>
+        <Button
+            android:id="@+id/btnRopa_de_varon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/categoria5"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/ropadevaron"
+            android:textSize="13dp"/>
+        <Button
+            android:id="@+id/btnAlquileres"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/categoria6"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/alquileres"
+            android:textSize="13dp"/>
         </LinearLayout>
-        <!-- Ropa de Varon-->
+    <!-- Fila 3 -->
         <LinearLayout
+            android:id="@+id/fila3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnInstrumentos"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/categoria7"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="16dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ropadevaron" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/categoria5"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <!-- Alquileres-->
-        <LinearLayout
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/instrumentos"
+            android:textSize="13dp"/>
+        <Button
+            android:id="@+id/btnRopa_de_bebe"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="@string/categoria8"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="16dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/alquileres" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/categoria6"
-                android:textSize="12sp" />
-
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/ropadebebe"
+            android:textSize="13dp"/>
+        <Button
+            android:id="@+id/btndeportes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/categoria9"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:drawableTop="@drawable/deportes"
+            android:textSize="13dp"/>
         </LinearLayout>
     </LinearLayout>
-    <!-- fila 3 -->
-    <LinearLayout
-        android:id="@+id/Fila3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <!-- Instrumentos-->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="16dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/instrumentos" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/categoria7"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <!-- Ropa de bebe-->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="16dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ropadebebe" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/categoria8"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="16dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/deportes" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/categoria9"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
-    </LinearLayout>
     <LinearLayout
         android:id="@+id/BotonesAbajo"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:gravity="center"
         android:background="@color/white"
-        android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        <ImageView
+        <Button
             android:id="@+id/imgCasa"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/casita"
-            android:contentDescription="@string/inicio"/>
-        <ImageView
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/casita"/>
+        <Button
             android:id="@+id/imgCarrito"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/carrito1"
-            android:contentDescription="@string/agragar_carrito"/>
-        <ImageView
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/carrito1"/>
+        <Button
             android:id="@+id/imgPerfil"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/foto_perfil"
-            android:contentDescription="@string/perfil"/>
-
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/foto_perfil"/>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
