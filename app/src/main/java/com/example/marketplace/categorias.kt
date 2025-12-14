@@ -65,5 +65,17 @@ class categorias : AppCompatActivity() {
             val intentDeportes = Intent(this, Deportes::class.java)
             startActivity(intentDeportes)
         }
+
+
+        binding.btnPerfil.setOnClickListener {
+            val intentPerfil = Intent(this, PerfilUsuario::class.java)
+            startActivity(intentPerfil)
+        }
+        binding.btnCasa.setOnClickListener {
+            val intentCasa = Intent(this, categorias::class.java)
+            startActivity(intentCasa)
+        }
+
+
     }
 }

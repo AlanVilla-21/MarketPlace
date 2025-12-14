@@ -45,6 +45,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <!--Nombre-->
+    <TextView
+        android:id="@+id/Nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingTop="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Foto_Perfil"/>
+
     <!--LineaSeparadora-->
     <View
         android:id="@+id/Separador"
@@ -139,35 +152,35 @@
     </LinearLayout>
     </LinearLayout>
         <!--Botones abajo-->
-        <LinearLayout
-            android:id="@+id/BotonesAbajo"
+    <LinearLayout
+        android:id="@+id/BotonesAbajo"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <Button
+            android:id="@+id/btnCasa"
             android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:background="@color/white"
-            android:paddingHorizontal="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-            <ImageView
-                android:id="@+id/imgCasa"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:src="@drawable/casita" />
-            <ImageView
-                android:id="@+id/imgCarrito"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:src="@drawable/carrito1" />
-            <ImageView
-                android:id="@+id/imgPerfil"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_weight="1"
-                android:src="@drawable/foto_perfil"
-                android:contentDescription="@string/perfil"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/casita"/>
+        <Button
+            android:id="@+id/btnCarrito"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/carrito1"/>
+        <Button
+            android:id="@+id/btnPerfil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/foto_perfil"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
