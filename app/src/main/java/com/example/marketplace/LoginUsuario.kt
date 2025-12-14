@@ -45,9 +45,9 @@ class LoginUsuario : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-                    val categorias =  Intent(this, categorias::class.java)
-                    startActivity(categorias)
-                    finish() // no podemos volver atras osea no podemos volver a la activity, investigar que.
+                    val intentUsuarioLogueado =  Intent(this, HomeUsuario::class.java)
+                    startActivity(intentUsuarioLogueado)
+                    finish()
                 }else{
                     Toast.makeText(
                         baseContext,

@@ -14,49 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.MarketPlace">
-        <activity
-            android:name=".PerfilUsuario"
-            android:exported="false" />
-        <activity
-            android:name=".Deportes"
-            android:exported="false" />
-        <activity
-            android:name=".RopaBebe"
-            android:exported="false" />
-        <activity
-            android:name=".Instrumentos"
-            android:exported="false" />
-        <activity
-            android:name=".Alquileres"
-            android:exported="false" />
-        <activity
-            android:name=".RopaVaron"
-            android:exported="false" />
-        <activity
-            android:name=".Muebles"
-            android:exported="false" />
-        <activity
-            android:name=".Electronica"
-            android:exported="false" />
-        <activity
-            android:name=".Vehiculos"
-            android:exported="false" />
-        <activity
-            android:name=".RopaMujer"
-            android:exported="false" />
-        <activity
-            android:name=".categorias"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterUsuario"
+
+        <activity android:name=".HomeUsuario" />
+
+        <activity android:name=".RegisterUsuario"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginUsuario" />
+
+        <activity
+            android:name=".LoginUsuario"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
