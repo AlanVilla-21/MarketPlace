@@ -7,14 +7,14 @@ import androidx.room.Query
 @Dao
 interface ProductoDao {
 
-    @Query("SELECT * FROM productoroom")
+    @Query("SELECT * FROM ProductoRoom")
     fun getAll(): List<ProductoRoom>
 
-    @Query("SELECT * FROM productoroom WHERE categoria = :categoria")
-    fun getByCategori(categoria: Int): List<ProductoRoom>
+    @Query("SELECT * FROM ProductoRoom WHERE categoria = :categoria")
+    fun getByCategoria(categoria: String): List<ProductoRoom>
 
-    @Query("SELECT * FROM productoroom WHERE mombre LIKE '%' || :texto || '%'")
-    fun getByNombre(texto: String): List<ProductoRoom>
+    @Query("SELECT * FROM ProductoRoom WHERE nombre LIKE '%' || :texto || '%'")
+    fun buscarPorNombre(texto: String): List<ProductoRoom>
 
     @Insert
     fun insertAll(vararg productos: ProductoRoom)

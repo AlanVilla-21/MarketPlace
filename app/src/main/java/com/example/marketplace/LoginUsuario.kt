@@ -23,12 +23,12 @@ class LoginUsuario : AppCompatActivity() {
         auth = Firebase.auth
 
         // Si ya hay usuario logueado, lo mandamos directo al Home
-//        val currentUser = auth.currentUser
-//        if (currentUser != null){
-//            val intentUsuarioLogueado =  Intent(this, HomeUsuario::class.java)
-//            startActivity(intentUsuarioLogueado)
-//            finish()
-//        }
+        val currentUser = auth.currentUser
+        if (currentUser != null){
+            val intentUsuarioLogueado =  Intent(this, HomeProductos::class.java)
+            startActivity(intentUsuarioLogueado)
+            finish()
+        }
 
         binding.btnSignIn.setOnClickListener {
             val correo = binding.etEmailLogin.text.toString()
@@ -45,7 +45,7 @@ class LoginUsuario : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-                    val intentUsuarioLogueado =  Intent(this, HomeUsuario::class.java)
+                    val intentUsuarioLogueado =  Intent(this, HomeProductos::class.java)
                     startActivity(intentUsuarioLogueado)
                     finish()
                 }else{

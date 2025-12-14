@@ -14,20 +14,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.MarketPlace">
-
-        <activity android:name=".HomeUsuario" />
-
-        <activity android:name=".RegisterUsuario"
+        <activity
+            android:name=".Carrito"
+            android:exported="false" />
+        <activity
+            android:name=".DetalleProducto"
+            android:exported="false" />
+        <activity
+            android:name=".HomeProductos"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterUsuario"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".LoginUsuario"/>
-
+        <activity android:name=".LoginUsuario" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

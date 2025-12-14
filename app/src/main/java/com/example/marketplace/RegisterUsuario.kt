@@ -38,7 +38,7 @@ class RegisterUsuario : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val intentUsuarioNuevo = Intent(this, HomeUsuario::class.java)
+                    val intentUsuarioNuevo = Intent(this, HomeProductos::class.java)
                     startActivity(intentUsuarioNuevo)
                     finish()
                 } else {

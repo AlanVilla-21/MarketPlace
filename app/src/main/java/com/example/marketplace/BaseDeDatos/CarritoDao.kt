@@ -14,4 +14,11 @@ interface CarritoDao {
 
     @Query("DELETE FROM carritoitemroom")
     fun deleteAll()
+
+    @Query("SELECT * FROM carritoitemroom WHERE idProducto = :idProd LIMIT 1")
+    fun getByIdProducto(idProd: Int): CarritoItemRoom?
+
+    @Query("UPDATE carritoitemroom SET cantidad = :nuevaCantidad WHERE id = :idItem")
+    fun updateCantidad(idItem: Int, nuevaCantidad: Double)
+
 }
