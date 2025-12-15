@@ -47,12 +47,15 @@ class LoginUsuario : AppCompatActivity() {
                 if (task.isSuccessful){
                     val intentHomeProductos =  Intent(this, HomeProductos::class.java)
                     startActivity(intentHomeProductos)
+                    finish()
                 }else{
-                    Toast.makeText(
-                        baseContext,
-                        "No pudo logearse el usuario.",
-                        Toast.LENGTH_LONG,
-                    ).show()
+//                    Toast.makeText(
+//                        baseContext,
+//                        "No pudo logearse el usuario.",
+//                        Toast.LENGTH_LONG,
+//                    ).show()
+                    val msg = task.exception?.message?: "Error desconocido"
+                    Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
                 }
             }
     }

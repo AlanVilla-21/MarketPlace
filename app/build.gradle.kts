@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+   // id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.gms.google-services")
     id("kotlin-kapt")
 }
@@ -51,14 +51,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
+    // serializacion
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    //ROOM
     implementation("androidx.room:room-runtime:2.6.0-alpha01")
     implementation("androidx.room:room-ktx:2.6.0-alpha01")
-
-    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
-    implementation("com.google.firebase:firebase-auth:23.1.0") // This works
     kapt("androidx.room:room-compiler:2.6.0")
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+    implementation("com.google.firebase:firebase-auth-ktx") // This works
+
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 

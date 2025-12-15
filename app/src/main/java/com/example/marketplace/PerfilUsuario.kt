@@ -27,5 +27,11 @@ class PerfilUsuario : AppCompatActivity() {
             val intentHomeProductos = Intent(this, HomeProductos::class.java)
             startActivity(intentHomeProductos)
         }
+        binding.btnCarrito.setOnClickListener {
+            val intentCarrito = Intent(this, Carrito::class.java)
+            startActivity(intentCarrito)
+
+
+        }
     }
 }
