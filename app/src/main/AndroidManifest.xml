@@ -14,45 +14,57 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.MarketPlace">
-
-        <activity android:name=".categorias"
+        <activity
+            android:name=".Historial"
             android:exported="false" />
-        <activity android:name=".PerfilUsuario"
-            android:exported="true"/>
-
-        <activity android:name=".Vehiculos"
-            android:exported="true"/>
-        <activity android:name=".RopaMujer"
-            android:exported="true"/>
-        <activity android:name=".Electronica"
-            android:exported="true"/>
-        <activity android:name=".Muebles"
-            android:exported="true"/>
-        <activity android:name=".RopaVaron"
-            android:exported="true"/>
-        <activity android:name=".Alquileres"
-            android:exported="true"/>
-        <activity android:name=".Instrumentos"
-            android:exported="true"/>
-        <activity android:name=".RopaBebe"
-            android:exported="true"/>
-        <activity android:name=".Deportes"
+        <activity
+            android:name=".categorias"
+            android:exported="false" />
+        <activity
+            android:name=".PerfilUsuario"
+            android:exported="true" />
+        <activity
+            android:name=".Vehiculos"
+            android:exported="true" />
+        <activity
+            android:name=".RopaMujer"
+            android:exported="true" />
+        <activity
+            android:name=".Electronica"
+            android:exported="true" />
+        <activity
+            android:name=".Muebles"
+            android:exported="true" />
+        <activity
+            android:name=".RopaVaron"
+            android:exported="true" />
+        <activity
+            android:name=".Alquileres"
+            android:exported="true" />
+        <activity android:name=".HomeProductos"
+            android:exported="true" />
+        <activity
+            android:name=".Instrumentos"
+            android:exported="true" />
+        <activity
+            android:name=".RopaBebe"
+            android:exported="true" />
+        <activity
+            android:name=".Deportes"
             android:exported="true">
 
-        </activity>
 
-        <activity android:name=".RegisterUsuario"
+        </activity>
+        <activity
+            android:name=".RegisterUsuario"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".LoginUsuario"/>
-
-
+        <activity android:name=".LoginUsuario" />
     </application>
 
 </manifest>
