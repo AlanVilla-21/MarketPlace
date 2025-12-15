@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         menuBinding.filaCategorias.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             // ⚠️ cambia "Categorias" por el nombre real de tu Activity
-            startActivity(Intent(this, Categorias::class.java))
+            startActivity(Intent(this, Categorias_hambur::class.java))
         }
 
         menuBinding.filaPerfil.setOnClickListener {
