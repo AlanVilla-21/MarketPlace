@@ -1,8 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-        id("com.google.gms.google-services")
-    }
+
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+    id("com.google.gms.google-services")
+    id("kotlin-kapt")
+}
 
 android {
     namespace = "com.example.marketplace"
@@ -48,12 +51,19 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
-    implementation("com.google.firebase:firebase-auth:23.1.0") // This works
-    implementation(libs.firebase.auth.ktx)
-    implementation(platform(libs.firebase.bom))
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
     implementation("androidx.room:room-runtime:2.6.0-alpha01")
     implementation("androidx.room:room-ktx:2.6.0-alpha01")
+
+    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+    implementation("com.google.firebase:firebase-auth:23.1.0") // This works
+    kapt("androidx.room:room-compiler:2.6.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    implementation(libs.firebase.auth.ktx)
+    implementation(platform(libs.firebase.bom))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

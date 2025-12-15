@@ -4,19 +4,46 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="14dp">
-
+    
     <EditText
         android:id="@+id/etBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Buscar producto"
         android:padding="12dp" />
-
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProductos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingTop="10dp" />
-
+    <LinearLayout
+        android:id="@+id/BotonesAbajo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <Button
+            android:id="@+id/btnCasa"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/casita"/>
+        <Button
+            android:id="@+id/btnCarrito"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/carrito1"/>
+        <Button
+            android:id="@+id/btnPerfil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/foto_perfil"/>
+    </LinearLayout>
 </LinearLayout>

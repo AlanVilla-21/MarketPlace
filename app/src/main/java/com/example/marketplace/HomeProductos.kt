@@ -123,5 +123,13 @@ class HomeProductos : AppCompatActivity() {
                 cargarProductos()
             }
         }
+        binding.btnPerfil.setOnClickListener {
+            val intentPerfil = Intent(this, PerfilUsuario::class.java)
+            startActivity(intentPerfil)
+        }
+        binding.btnCasa.setOnClickListener {
+            val intentHomeProductos = Intent(this, HomeProductos::class.java)
+            startActivity(intentHomeProductos)
+        }
     }
 }

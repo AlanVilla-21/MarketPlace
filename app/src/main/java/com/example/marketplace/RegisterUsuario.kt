@@ -40,7 +40,6 @@ class RegisterUsuario : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val intentUsuarioNuevo = Intent(this, HomeProductos::class.java)
                     startActivity(intentUsuarioNuevo)
-                    finish()
                 } else {
                     Toast.makeText(
                         baseContext,

@@ -24,8 +24,8 @@ class PerfilUsuario : AppCompatActivity() {
 
         }
         binding.btnCasa.setOnClickListener {
-            val intentCategorias = Intent(this, categorias::class.java)
-            startActivity(intentCategorias)
+            val intentHomeProductos = Intent(this, HomeProductos::class.java)
+            startActivity(intentHomeProductos)
         }
     }
 }
