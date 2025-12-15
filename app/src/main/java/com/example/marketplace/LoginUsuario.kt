@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.marketplace.databinding.ActivityCategoriasBinding
 import com.example.marketplace.databinding.ActivityLoginUsuarioBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -45,8 +46,8 @@ class LoginUsuario : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-                    val intentUsuarioLogueado =  Intent(this, HomeUsuario::class.java)
-                    startActivity(intentUsuarioLogueado)
+                    val intentcategorias =  Intent(this, categorias::class.java)
+                    startActivity(intentcategorias)
                     finish()
                 }else{
                     Toast.makeText(

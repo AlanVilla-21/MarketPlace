@@ -52,6 +52,8 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:23.1.0") // This works
     implementation(libs.firebase.auth.ktx)
     implementation(platform(libs.firebase.bom))
+    implementation("androidx.room:room-runtime:2.6.0-alpha01")
+    implementation("androidx.room:room-ktx:2.6.0-alpha01")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
