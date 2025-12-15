@@ -19,6 +19,6 @@ interface CarritoDao {
     fun getByIdProducto(idProd: Int): CarritoItemRoom?
 
     @Query("UPDATE carritoitemroom SET cantidad = :nuevaCantidad WHERE id = :idItem")
-    fun updateCantidad(idItem: Int, nuevaCantidad: Double)
+    fun updateCantidad(idItem: Int, nuevaCantidad: Int)
 
 }
