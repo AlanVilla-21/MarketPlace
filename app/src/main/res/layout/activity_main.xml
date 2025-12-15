@@ -6,7 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context = ".MainActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainRoot"
         android:layout_width="match_parent"
@@ -99,9 +101,10 @@
                 android:contentDescription="@string/perfil"/>
 
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-   <include
+    <include
        android:id="@+id/menuLateral"
        layout="@layout/layout_menu_lateral"
        android:layout_width="280dp"
