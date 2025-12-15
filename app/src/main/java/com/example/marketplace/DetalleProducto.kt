@@ -9,7 +9,6 @@ import com.example.marketplace.databinding.ActivityDetalleProductoBinding
 import com.example.marketplace.BaseDeDatos.CarritoDao
 import com.example.marketplace.BaseDeDatos.CarritoItemRoom
 import com.example.marketplace.BaseDeDatos.MarketplaceDataBase
-import com.example.marketplace.Carrito
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

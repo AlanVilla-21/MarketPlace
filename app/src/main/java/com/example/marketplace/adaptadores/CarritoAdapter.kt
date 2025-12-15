@@ -2,45 +2,56 @@ package com.example.marketplace.adaptadores
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.marketplace.R
 import com.example.marketplace.BaseDeDatos.CarritoItemRoom
+import com.example.marketplace.databinding.ItemCarritoBinding
 
-class CarritoAdapter(
-    private var lista: List<CarritoItemRoom>,
-    private val context: Context
-) : RecyclerView.Adapter<CarritoAdapter.ViewHolder>() {
+class CarritoAdapter : RecyclerView.Adapter<CarritoAdapter.CarritoCardViewHolder>() {
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val img: ImageView = v.findViewById(R.id.imgCarrito)
-        val tvNombre: TextView = v.findViewById(R.id.tvNombreCarrito)
-        val tvCantidad: TextView = v.findViewById(R.id.tvCantidadCarrito)
-        val tvPrecio: TextView = v.findViewById(R.id.tvPrecioCarrito)
+    private val dataCards = mutableListOf<CarritoItemRoom>()
+    private var context: Context? = null
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarritoCardViewHolder {
+        context = parent.context
+        return CarritoCardViewHolder(
+            ItemCarritoBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_carrito, parent, false)
-        return ViewHolder(v)
+    override fun onBindViewHolder(holder: CarritoCardViewHolder, position: Int) {
+        holder.binding(dataCards[position])
     }
 
-    override fun getItemCount(): Int = lista.size
+    override fun getItemCount(): Int = dataCards.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = lista[position]
-        holder.tvNombre.text = item.nombre
-        holder.tvCantidad.text = "Cantidad: ${item.cantidad}"
-        holder.tvPrecio.text = "Bs. ${item.precio * item.cantidad}"
+    inner class CarritoCardViewHolder(private val binding: ItemCarritoBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        val idImagen = context.resources.getIdentifier(item.imagen, "drawable", context.packageName)
-        holder.img.setImageResource(idImagen)
+        fun binding(data: CarritoItemRoom) {
+
+            binding.tvNombreCarrito.text = data.nombre
+            binding.tvCantidadCarrito.text = "Cantidad: ${data.cantidad}"
+            binding.tvPrecioCarrito.text = "Bs. ${data.precio * data.cantidad}"
+
+            val idImagen = context?.resources?.getIdentifier(data.imagen, "drawable", context?.packageName)
+            if (idImagen != null && idImagen != 0) {
+                binding.imgCarrito.setImageResource(idImagen)
+            }
+
+            manejoDeDatos()
+        }
+
+        fun manejoDeDatos() {}
     }
 
-    fun actualizarLista(nueva: List<CarritoItemRoom>) {
-        lista = nueva
+    fun addDataCards(list: List<CarritoItemRoom>) {
+        dataCards.clear()
+        dataCards.addAll(list)
         notifyDataSetChanged()
     }
 }

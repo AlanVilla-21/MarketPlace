@@ -40,7 +40,10 @@ class HomeProductos : AppCompatActivity() {
 
         productoDao = db.productoDao()
 
-        adapter = ProductoAdapter(listOf(), this) { producto ->
+        adapter = ProductoAdapter()
+        binding.rvProductos.adapter = adapter
+
+        adapter.setOnClick { producto ->
             val i = Intent(this, DetalleProducto::class.java)
             i.putExtra("id", producto.id)
             i.putExtra("categoria", producto.categoria)
@@ -65,7 +68,7 @@ class HomeProductos : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
             val lista = productoDao.getAll()
             withContext(Dispatchers.Main) {
-                adapter.actualizarLista(lista)
+                adapter.addDataCards(lista)
             }
         }
     }
@@ -78,7 +81,7 @@ class HomeProductos : AppCompatActivity() {
                 productoDao.buscarPorNombre(texto)
             }
             withContext(Dispatchers.Main) {
-                adapter.actualizarLista(lista)
+                adapter.addDataCards(lista)
             }
         }
     }

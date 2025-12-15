@@ -32,11 +32,13 @@ class Carrito : AppCompatActivity() {
             this,
             MarketplaceDataBase::class.java,
             DATABASE_NAME
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
 
         carritoDao = db.carritoDao()
 
-        adapter = CarritoAdapter(listOf(), this)
+        adapter = CarritoAdapter()
+
         binding.rvCarrito.layoutManager = LinearLayoutManager(this)
         binding.rvCarrito.adapter = adapter
 
@@ -53,7 +55,7 @@ class Carrito : AppCompatActivity() {
             val total = lista.sumOf { it.precio * it.cantidad }
 
             withContext(Dispatchers.Main) {
-                adapter.actualizarLista(lista)
+                adapter.addDataCards(lista)
                 binding.tvTotal.text = "Total: Bs. $total"
             }
         }
