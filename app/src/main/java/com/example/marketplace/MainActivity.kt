@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // ✅ binding del include del menú lateral
+        //  binding del include del menú lateral
         val menuView: View = binding.root.findViewById(R.id.menuLateral)
-        menuBinding = LayoutMenuLateralBinding.bind(menuView)
+         menuBinding = LayoutMenuLateralBinding.bind(menuView)
 
         // Abrir menú con ☰
         binding.txtMenu.setOnClickListener {
@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
 
         menuBinding.filaCategorias.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
-            // ⚠️ cambia "Categorias" por el nombre real de tu Activity
             startActivity(Intent(this, Categorias_hambur::class.java))
         }
 
