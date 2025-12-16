@@ -19,6 +19,8 @@
     <string name="perfil" > Perfil </string>
     <string name="mi_historial" > Mi historial </string>
 
+    <string name="inicio" > Inicio </string>
+    <string name="agregar_carrito" > Carrito </string>
 
     <string name="categoria" > Categorias </string>
     <string name="categoria1" > Vehiculos" </string>

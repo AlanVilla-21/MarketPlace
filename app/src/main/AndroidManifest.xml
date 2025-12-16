@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.MarketPlace">
 
-        <activity android:name=".HomeUsuario" />
+        
         <activity android:name=".VenderProductoActivity" />
         <activity android:name=".PerfilUsuario" />
         <activity android:name=".RegisterUsuario" />

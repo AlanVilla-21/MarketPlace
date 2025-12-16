@@ -163,7 +163,7 @@
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:src="@drawable/carrito1"
-                android:contentDescription="@string/agragar_carrito"/>
+                android:contentDescription="@string/agregar_carrito"/>
             <ImageView
                 android:id="@+id/imgPerfil"
                 android:layout_width="24dp"
