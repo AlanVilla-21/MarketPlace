@@ -7,15 +7,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.marketplace.databinding.ActivityPerfilUsuarioBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.Firebase
+
+
+
 
 class PerfilUsuario : AppCompatActivity() {
     private lateinit var binding: ActivityPerfilUsuarioBinding
+    private lateinit var auth: FirebaseAuth
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityPerfilUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //nombre herencia
+        auth = Firebase.auth
+        val usuario = auth.currentUser
+        val nombre = usuario?.displayName?:usuario?.email ?:"Anónimo"
+        binding.Nombre.text = nombre
+        //
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
