@@ -23,6 +23,10 @@ class PerfilUsuario : AppCompatActivity() {
             insets
 
         }
+        binding.btnVenderProductos.setOnClickListener {
+            startActivity(Intent(this, VenderProductos::class.java))
+        }
+
         binding.btnCasa.setOnClickListener {
             val intentHomeProductos = Intent(this, HomeProductos::class.java)
             startActivity(intentHomeProductos)

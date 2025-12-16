@@ -82,6 +82,12 @@ class HomeProductos : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        cargarProductos()
+    }
+
+
     private fun cargarProductos() {
         GlobalScope.launch(Dispatchers.IO) {
             val lista = productoDao.getAll()
