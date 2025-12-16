@@ -4,10 +4,12 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [ProductoRoom::class, CarritoItemRoom::class],
-    version = 4
+    entities = [ProductoRoom::class, CarritoItemRoom::class, CompraRoom::class, CompraDetalleRoom::class],
+    version = 5
 )
 abstract class MarketplaceDataBase : RoomDatabase() {
     abstract fun productoDao(): ProductoDao
     abstract fun carritoDao(): CarritoDao
+    abstract fun compraDao(): CompraDao
 }
+
