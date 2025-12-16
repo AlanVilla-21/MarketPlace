@@ -111,110 +111,100 @@ class HomeProductos : AppCompatActivity() {
     }
 
     private fun seedProductosSiHaceFalta() {
+
         GlobalScope.launch(Dispatchers.IO) {
 
-            val existentes = productoDao.getAll()
-            if (existentes.isNotEmpty()) {
-                withContext(Dispatchers.Main) {
-                    cargarProductos()
-                }
-                return@launch
-            }
+            val existentes: List<ProductoRoom> = productoDao.getAll()
+            val categoriasExistentes = existentes.map { it.categoria }.toSet()
 
             val lista = ArrayList<ProductoRoom>()
 
+            if (!categoriasExistentes.contains("Vehiculos")) {
+                lista.add(ProductoRoom(0,"Vehiculos","Toyota Corolla","Vehículo en buen estado",1000.0,"toyota_corolla"))
+                lista.add(ProductoRoom(0,"Vehiculos","Suzuki Swift","Económico y práctico",1200.0,"suzuki_swift"))
+                lista.add(ProductoRoom(0,"Vehiculos","Nissan Note","Ideal para ciudad",900.0,"nissan_note"))
+                lista.add(ProductoRoom(0,"Vehiculos","Honda Civic","Cómodo y rápido",1500.0,"honda_civic"))
+                lista.add(ProductoRoom(0,"Vehiculos","Moto Yamaha","Moto urbana",700.0,"moto_yamaha"))
+                lista.add(ProductoRoom(0,"Vehiculos","Bicicleta MTB","Todo terreno",300.0,"bicicleta_mtb"))
+            }
 
-// Vehiculos (6)
+            if (!categoriasExistentes.contains("Ropa de varón")) {
+                lista.add(ProductoRoom(0,"Ropa de varón","Zapatos Oxford","Talla 42",350.0,"zapatos_oxford"))
+                lista.add(ProductoRoom(0,"Ropa de varón","Camisa Formal","Camisa blanca",120.0,"camisa_formal"))
+                lista.add(ProductoRoom(0,"Ropa de varón","Pantalón Jeans","Jeans azul",100.0,"pantalon_jeans"))
+                lista.add(ProductoRoom(0,"Ropa de varón","Chaqueta","Chaqueta negra",200.0,"chaqueta_negra"))
+                lista.add(ProductoRoom(0,"Ropa de varón","Polera","Polera deportiva",80.0,"polera_deportiva"))
+                lista.add(ProductoRoom(0,"Ropa de varón","Zapatillas","Urbanas",180.0,"zapatillas_urbanas"))
+            }
 
-            lista.add(ProductoRoom(0,"Vehiculos","Toyota Corolla","Vehículo en buen estado",1000.0,"toyota_corolla"))
-            lista.add(ProductoRoom(0,"Vehiculos","Suzuki Swift","Económico y práctico",1200.0,"suzuki_swift"))
-            lista.add(ProductoRoom(0,"Vehiculos","Nissan Note","Ideal para ciudad",900.0,"nissan_note"))
-            lista.add(ProductoRoom(0,"Vehiculos","Honda Civic","Cómodo y rápido",1500.0,"honda_civic"))
-            lista.add(ProductoRoom(0,"Vehiculos","Moto Yamaha","Moto urbana",700.0,"moto_yamaha"))
-            lista.add(ProductoRoom(0,"Vehiculos","Bicicleta MTB","Todo terreno",300.0,"bicicleta_mtb"))
+            if (!categoriasExistentes.contains("Ropa de Mujer")) {
+                // pon tus 6 drawables reales
+                lista.add(ProductoRoom(0,"Ropa de Mujer","Vestido","Vestido casual",180.0,"vestido"))
+                lista.add(ProductoRoom(0,"Ropa de Mujer","Blusa","Blusa cómoda",90.0,"blusa"))
+                lista.add(ProductoRoom(0,"Ropa de Mujer","Falda","Falda negra",110.0,"falda"))
+                lista.add(ProductoRoom(0,"Ropa de Mujer","Tacones","Tacones rojos",200.0,"tacones"))
+                lista.add(ProductoRoom(0,"Ropa de Mujer","Bolso","Bolso elegante",150.0,"bolso"))
+                lista.add(ProductoRoom(0,"Ropa de Mujer","Chaqueta Mujer","Abrigo ligero",220.0,"chaqueta_mujer"))
+            }
 
+            if (!categoriasExistentes.contains("Electronica")) {
+                lista.add(ProductoRoom(0,"Electronica","Audífonos","Bluetooth",120.0,"audifonos"))
+                lista.add(ProductoRoom(0,"Electronica","Mouse","Inalámbrico",80.0,"mouse"))
+                lista.add(ProductoRoom(0,"Electronica","Teclado","Mecánico",200.0,"teclado"))
+                lista.add(ProductoRoom(0,"Electronica","Parlante","Portátil",160.0,"parlante"))
+                lista.add(ProductoRoom(0,"Electronica","Celular","Gama media",1500.0,"celular"))
+                lista.add(ProductoRoom(0,"Electronica","Laptop","Para estudio",3500.0,"laptop"))
+            }
 
-// Ropa de Mujer (6)
+            if (!categoriasExistentes.contains("Muebles")) {
+                lista.add(ProductoRoom(0,"Muebles","Silla","Silla cómoda",120.0,"silla"))
+                lista.add(ProductoRoom(0,"Muebles","Mesa","Mesa de comedor",400.0,"mesa"))
+                lista.add(ProductoRoom(0,"Muebles","Sofá","Sofá 3 plazas",900.0,"sofa"))
+                lista.add(ProductoRoom(0,"Muebles","Cama","Cama 2 plazas",1200.0,"cama"))
+                lista.add(ProductoRoom(0,"Muebles","Lámpara","Lámpara de mesa",90.0,"lampara"))
+                lista.add(ProductoRoom(0,"Muebles","Estante","Estante madera",250.0,"estante"))
+            }
 
-            lista.add(ProductoRoom(0,"Ropa de Mujer","Vestido Casual","Vestido para uso diario",180.0,"ropa_mujer_vestido"))
-            lista.add(ProductoRoom(0,"Ropa de Mujer","Blusa Elegante","Blusa formal",120.0,"ropa_mujer_blusa"))
-            lista.add(ProductoRoom(0,"Ropa de Mujer","Falda Negra","Falda clásica",110.0,"ropa_mujer_falda"))
-            lista.add(ProductoRoom(0,"Ropa de Mujer","Tacones","Zapatos de tacón",220.0,"ropa_mujer_tacones"))
-            lista.add(ProductoRoom(0,"Ropa de Mujer","Chaqueta Mujer","Abrigo ligero",200.0,"ropa_mujer_chaqueta"))
-            lista.add(ProductoRoom(0,"Ropa de Mujer","Bolso","Bolso de mano",160.0,"ropa_mujer_bolso"))
+            if (!categoriasExistentes.contains("Alquileres")) {
+                lista.add(ProductoRoom(0,"Alquileres","Departamento","Sopocachi",2500.0,"departamento"))
+                lista.add(ProductoRoom(0,"Alquileres","Habitación","Centro",900.0,"habitacion"))
+                lista.add(ProductoRoom(0,"Alquileres","Casa","Achumani",4000.0,"casa"))
+                lista.add(ProductoRoom(0,"Alquileres","Oficina","Obrajes",3000.0,"oficina"))
+                lista.add(ProductoRoom(0,"Alquileres","Garaje","Cochera",400.0,"garaje"))
+                lista.add(ProductoRoom(0,"Alquileres","Local","Comercial",3500.0,"local"))
+            }
 
+            if (!categoriasExistentes.contains("Instrumentos")) {
+                lista.add(ProductoRoom(0,"Instrumentos","Guitarra","Acústica",500.0,"guitarra"))
+                lista.add(ProductoRoom(0,"Instrumentos","Teclado","61 teclas",900.0,"teclado_musical"))
+                lista.add(ProductoRoom(0,"Instrumentos","Batería","Batería básica",2500.0,"bateria"))
+                lista.add(ProductoRoom(0,"Instrumentos","Violín","Para estudiantes",700.0,"violin"))
+                lista.add(ProductoRoom(0,"Instrumentos","Ukelele","Pequeño",250.0,"ukelele"))
+                lista.add(ProductoRoom(0,"Instrumentos","Micrófono","Con base",180.0,"microfono"))
+            }
 
-// Electronica (6)
+            if (!categoriasExistentes.contains("Ropa de Bebe")) {
+                lista.add(ProductoRoom(0,"Ropa de Bebe","Body","Algodón",60.0,"body_bebe"))
+                lista.add(ProductoRoom(0,"Ropa de Bebe","Pijama","Calientito",80.0,"pijama_bebe"))
+                lista.add(ProductoRoom(0,"Ropa de Bebe","Gorro","Suave",25.0,"gorro_bebe"))
+                lista.add(ProductoRoom(0,"Ropa de Bebe","Zapatos Bebé","Pequeños",50.0,"zapatos_bebe"))
+                lista.add(ProductoRoom(0,"Ropa de Bebe","Manta","Polar",90.0,"manta_bebe"))
+                lista.add(ProductoRoom(0,"Ropa de Bebe","Conjunto","2 piezas",110.0,"conjunto_bebe"))
+            }
 
-            lista.add(ProductoRoom(0,"Electronica","Audífonos","Audífonos inalámbricos",150.0,"electronica_audifonos"))
-            lista.add(ProductoRoom(0,"Electronica","Mouse Gamer","Mouse con luces",120.0,"electronica_mouse"))
-            lista.add(ProductoRoom(0,"Electronica","Teclado Mecánico","Teclado mecánico",250.0,"electronica_teclado"))
-            lista.add(ProductoRoom(0,"Electronica","Parlante Bluetooth","Parlante portátil",180.0,"electronica_parlante"))
-            lista.add(ProductoRoom(0,"Electronica","Smartwatch","Reloj inteligente",300.0,"electronica_smartwatch"))
-            lista.add(ProductoRoom(0,"Electronica","Cargador Rápido","Carga rápida",80.0,"electronica_cargador"))
+            if (!categoriasExistentes.contains("Deportes")) {
+                lista.add(ProductoRoom(0,"Deportes","Balón","Fútbol",80.0,"balon"))
+                lista.add(ProductoRoom(0,"Deportes","Guantes","Box",120.0,"guantes_box"))
+                lista.add(ProductoRoom(0,"Deportes","Mancuernas","Par 10kg",200.0,"mancuernas"))
+                lista.add(ProductoRoom(0,"Deportes","Raqueta","Tenis",250.0,"raqueta"))
+                lista.add(ProductoRoom(0,"Deportes","Casco","Bici",150.0,"casco"))
+                lista.add(ProductoRoom(0,"Deportes","Cuerda","Saltar",40.0,"cuerda"))
+            }
 
-
-// Muebles (6)
-
-            lista.add(ProductoRoom(0,"Muebles","Sillón Café","Sillón cómodo",500.0,"muebles_sillon"))
-            lista.add(ProductoRoom(0,"Muebles","Mesa de Centro","Mesa para sala",350.0,"muebles_mesa_centro"))
-            lista.add(ProductoRoom(0,"Muebles","Silla","Silla moderna",200.0,"muebles_silla"))
-            lista.add(ProductoRoom(0,"Muebles","Escritorio","Ideal para estudio",450.0,"muebles_escritorio"))
-            lista.add(ProductoRoom(0,"Muebles","Estante","Estante de madera",300.0,"muebles_estante"))
-            lista.add(ProductoRoom(0,"Muebles","Cama 2 Plazas","Cama cómoda",900.0,"muebles_cama"))
-
-
-// Ropa de varón (6)
-
-            lista.add(ProductoRoom(0,"Ropa de varón","Zapatos Oxford","Talla 42",350.0,"zapatos_oxford"))
-            lista.add(ProductoRoom(0,"Ropa de varón","Camisa Formal","Camisa blanca",120.0,"camisa_formal"))
-            lista.add(ProductoRoom(0,"Ropa de varón","Pantalón Jeans","Jeans azul",100.0,"pantalon_jeans"))
-            lista.add(ProductoRoom(0,"Ropa de varón","Chaqueta","Chaqueta negra",200.0,"chaqueta_negra"))
-            lista.add(ProductoRoom(0,"Ropa de varón","Polera","Polera deportiva",80.0,"polera_deportiva"))
-            lista.add(ProductoRoom(0,"Ropa de varón","Zapatillas","Urbanas",180.0,"zapatillas_urbanas"))
-
-
-// Alquileres (6)
-
-            lista.add(ProductoRoom(0,"Alquileres","Departamento","Departamento amoblado",1200.0,"alquiler_depa"))
-            lista.add(ProductoRoom(0,"Alquileres","Habitación","Habitación individual",600.0,"alquiler_habitacion"))
-            lista.add(ProductoRoom(0,"Alquileres","Auto por día","Alquiler de auto",250.0,"alquiler_auto"))
-            lista.add(ProductoRoom(0,"Alquileres","Salón de eventos","Para fiestas",800.0,"alquiler_salon"))
-            lista.add(ProductoRoom(0,"Alquileres","Equipo de sonido","Sonido para eventos",300.0,"alquiler_sonido"))
-            lista.add(ProductoRoom(0,"Alquileres","Proyector","Proyector para presentaciones",200.0,"alquiler_proyector"))
-
-
-// Instrumentos (6)
-
-            lista.add(ProductoRoom(0,"Instrumentos","Guitarra","Guitarra acústica",500.0,"instrumento_guitarra"))
-            lista.add(ProductoRoom(0,"Instrumentos","Bajo Eléctrico","Bajo 4 cuerdas",900.0,"instrumento_bajo"))
-            lista.add(ProductoRoom(0,"Instrumentos","Teclado","Teclado musical",1100.0,"instrumento_teclado"))
-            lista.add(ProductoRoom(0,"Instrumentos","Batería","Batería completa",2500.0,"instrumento_bateria"))
-            lista.add(ProductoRoom(0,"Instrumentos","Violín","Violín para estudiantes",700.0,"instrumento_violin"))
-            lista.add(ProductoRoom(0,"Instrumentos","Micrófono","Micrófono profesional",220.0,"instrumento_microfono"))
-
-
-// Ropa de Bebe (6)
-
-            lista.add(ProductoRoom(0,"Ropa de Bebe","Body","Body de algodón",60.0,"bebe_body"))
-            lista.add(ProductoRoom(0,"Ropa de Bebe","Pijama","Pijama suave",80.0,"bebe_pijama"))
-            lista.add(ProductoRoom(0,"Ropa de Bebe","Zapatos Bebé","Zapatos pequeños",50.0,"bebe_zapatos"))
-            lista.add(ProductoRoom(0,"Ropa de Bebe","Gorro","Gorro abrigado",35.0,"bebe_gorro"))
-            lista.add(ProductoRoom(0,"Ropa de Bebe","Pantalón Bebé","Pantalón cómodo",55.0,"bebe_pantalon"))
-            lista.add(ProductoRoom(0,"Ropa de Bebe","Chaqueta Bebé","Chaqueta abrigada",120.0,"bebe_chaqueta"))
-
-
-// Deportes (6)
-
-            lista.add(ProductoRoom(0,"Deportes","Balón de fútbol","Balón tamaño 5",90.0,"deportes_balon_futbol"))
-            lista.add(ProductoRoom(0,"Deportes","Guantes de box","Guantes resistentes",160.0,"deportes_guantes_box"))
-            lista.add(ProductoRoom(0,"Deportes","Mancuernas 10kg","Par de mancuernas",220.0,"deportes_mancuernas"))
-            lista.add(ProductoRoom(0,"Deportes","Cuerda","Cuerda para saltar",40.0,"deportes_cuerda"))
-            lista.add(ProductoRoom(0,"Deportes","Mat de yoga","Colchoneta",70.0,"deportes_mat_yoga"))
-            lista.add(ProductoRoom(0,"Deportes","Raqueta","Raqueta deportiva",150.0,"deportes_raqueta"))
-
-            for (p in lista) {
-                productoDao.insertAll(p)
+            if (lista.isNotEmpty()) {
+                for (p in lista) {
+                    productoDao.insertAll(p)
+                }
             }
 
             withContext(Dispatchers.Main) {
@@ -223,3 +213,4 @@ class HomeProductos : AppCompatActivity() {
         }
     }
 }
+
