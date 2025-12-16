@@ -6,22 +6,21 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.marketplace.databinding.ActivityPerfilUsuarioBinding
+import com.example.marketplace.databinding.ActivityMisComprasBinding
 
-class PerfilUsuario : AppCompatActivity() {
-    private lateinit var binding: ActivityPerfilUsuarioBinding
+class MisCompras : AppCompatActivity() {
+    private lateinit var binding: ActivityMisComprasBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityPerfilUsuarioBinding.inflate(layoutInflater)
+        binding = ActivityMisComprasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-
         }
         binding.btnCasa.setOnClickListener {
             val intentHomeProductos = Intent(this, HomeProductos::class.java)
@@ -31,17 +30,9 @@ class PerfilUsuario : AppCompatActivity() {
             val intentCarrito = Intent(this, Carrito::class.java)
             startActivity(intentCarrito)
         }
-        binding.btnMiHistorial.setOnClickListener {
-            val intentHistorial = Intent(this, Historial::class.java)
+        binding.btnPerfil.setOnClickListener {
+            val intentHistorial = Intent(this, PerfilUsuario::class.java)
             startActivity(intentHistorial)
-        }
-        binding.btnMisCompras.setOnClickListener {
-            val intentMisCompras = Intent(this, MisCompras::class.java)
-            startActivity(intentMisCompras)
-        }
-        binding.btnVenderProductos.setOnClickListener {
-            val intentVenderProductos = Intent(this, VenderProductos::class.java)
-            startActivity(intentVenderProductos)
         }
     }
 }

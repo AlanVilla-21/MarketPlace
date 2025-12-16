@@ -15,8 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.MarketPlace">
         <activity
+            android:name=".VenderProductos"
+            android:exported="false" />
+        <activity
+            android:name=".MisCompras"
+            android:exported="false" />
+        <activity
             android:name=".Historial"
             android:exported="false" />
+
         <activity
             android:name=".categorias"
             android:exported="false" />
@@ -41,10 +48,9 @@
         <activity
             android:name=".Alquileres"
             android:exported="true" />
-
-        <activity android:name=".HomeProductos"
+        <activity
+            android:name=".HomeProductos"
             android:exported="true" />
-
         <activity
             android:name=".DetalleProducto"
             android:exported="true" />
@@ -59,10 +65,7 @@
             android:exported="true" />
         <activity
             android:name=".Deportes"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".RegisterUsuario"
             android:exported="true">

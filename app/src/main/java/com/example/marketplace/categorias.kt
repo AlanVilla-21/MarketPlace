@@ -75,7 +75,9 @@ class categorias : AppCompatActivity() {
             val intentCasa = Intent(this, categorias::class.java)
             startActivity(intentCasa)
         }
-
-
+        binding.btnCarrito.setOnClickListener {
+            val intentCarrito = Intent(this, Carrito::class.java)
+            startActivity(intentCarrito)
+        }
     }
 }
