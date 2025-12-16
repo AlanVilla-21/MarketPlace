@@ -72,7 +72,7 @@ class categorias : AppCompatActivity() {
             startActivity(intentPerfil)
         }
         binding.btnCasa.setOnClickListener {
-            val intentCasa = Intent(this, categorias::class.java)
+            val intentCasa = Intent(this, HomeProductos::class.java)
             startActivity(intentCasa)
         }
         binding.btnCarrito.setOnClickListener {

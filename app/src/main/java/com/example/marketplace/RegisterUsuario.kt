@@ -29,8 +29,10 @@ class RegisterUsuario : AppCompatActivity() {
         }
 
         binding.btnYaTengoCuenta.setOnClickListener {
+            //FirebaseAuth.getInstance().signOut()//
             val intentIrALogin = Intent(this, LoginUsuario::class.java)
             startActivity(intentIrALogin)
+            finish()
         }
     }
 
