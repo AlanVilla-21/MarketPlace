@@ -47,7 +47,7 @@ class PerfilUsuario : AppCompatActivity() {
             startActivity(intentCarrito)
         }
         binding.btnMiHistorial.setOnClickListener {
-            val intentHistorial = Intent(this, Historial::class.java)
+            val intentHistorial = Intent(this, HistorialCompras::class.java)
             startActivity(intentHistorial)
         }
         binding.btnMisCompras.setOnClickListener {

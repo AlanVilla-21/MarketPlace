@@ -62,6 +62,11 @@ class HomeProductos : AppCompatActivity() {
         binding.etBuscar.doAfterTextChanged {
             buscar(it.toString())
         }
+
+        binding.btnCategorias.setOnClickListener {
+            startActivity(Intent(this, categorias::class.java))
+        }
+
     }
 
     private fun cargarProductos() {

@@ -21,14 +21,14 @@ class LoginUsuario : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
-        //obtener los datos de mi base interna, room o shared preferences.
+
         // Si ya hay usuario logueado, lo mandamos directo al Home
-//        val currentUser = auth.currentUser
-//        if (currentUser != null){
-//            val intentUsuarioLogueado =  Intent(this, HomeUsuario::class.java)
-//            startActivity(intentUsuarioLogueado)
-//            finish()
-//        }
+        val currentUser = auth.currentUser
+        if (currentUser != null){
+            val intentUsuarioLogueado =  Intent(this, HomeProductos::class.java)
+            startActivity(intentUsuarioLogueado)
+            finish()
+        }
 
         binding.btnSignIn.setOnClickListener {
             val correo = binding.etEmailLogin.text.toString()
@@ -45,17 +45,15 @@ class LoginUsuario : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-                    val intentHomeProductos =  Intent(this, HomeProductos::class.java)
-                    startActivity(intentHomeProductos)
+                    val intentUsuarioLogueado =  Intent(this, HomeProductos::class.java)
+                    startActivity(intentUsuarioLogueado)
                     finish()
                 }else{
-//                    Toast.makeText(
-//                        baseContext,
-//                        "No pudo logearse el usuario.",
-//                        Toast.LENGTH_LONG,
-//                    ).show()
-                    val msg = task.exception?.message?: "Error desconocido"
-                    Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext,
+                        "No pudo logearse el usuario.",
+                        Toast.LENGTH_LONG,
+                    ).show()
                 }
             }
     }

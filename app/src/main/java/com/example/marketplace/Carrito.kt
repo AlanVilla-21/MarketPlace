@@ -1,10 +1,14 @@
 package com.example.marketplace
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.marketplace.BaseDeDatos.CarritoDao
+import com.example.marketplace.BaseDeDatos.CompraDao
+import com.example.marketplace.BaseDeDatos.CompraDetalleRoom
+import com.example.marketplace.BaseDeDatos.CompraRoom
 import com.example.marketplace.BaseDeDatos.MarketplaceDataBase
 import com.example.marketplace.adaptadores.CarritoAdapter
 import com.example.marketplace.databinding.ActivityCarritoBinding
@@ -12,11 +16,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class Carrito : AppCompatActivity() {
 
     private lateinit var binding: ActivityCarritoBinding
     private lateinit var carritoDao: CarritoDao
+    private lateinit var compraDao: CompraDao
     private lateinit var adapter: CarritoAdapter
 
     companion object {
@@ -28,31 +36,32 @@ class Carrito : AppCompatActivity() {
         binding = ActivityCarritoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val db = Room.databaseBuilder(
-            this,
-            MarketplaceDataBase::class.java,
-            DATABASE_NAME
-        ).fallbackToDestructiveMigration()
+        val db = Room.databaseBuilder(this, MarketplaceDataBase::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration()
             .build()
 
         carritoDao = db.carritoDao()
+        compraDao = db.compraDao()
 
         adapter = CarritoAdapter()
-
         binding.rvCarrito.layoutManager = LinearLayoutManager(this)
         binding.rvCarrito.adapter = adapter
 
         cargarCarrito()
 
-        binding.btnVaciar.setOnClickListener {
-            vaciarCarrito()
+        binding.btnComprar.setOnClickListener {
+            realizarCompra()
         }
     }
 
     private fun cargarCarrito() {
         GlobalScope.launch(Dispatchers.IO) {
             val lista = carritoDao.getAll()
-            val total = lista.sumOf { it.precio * it.cantidad }
+
+            var total = 0.0
+            for (item in lista) {
+                total += item.precio * item.cantidad
+            }
 
             withContext(Dispatchers.Main) {
                 adapter.addDataCards(lista)
@@ -61,11 +70,42 @@ class Carrito : AppCompatActivity() {
         }
     }
 
-    private fun vaciarCarrito() {
+    private fun realizarCompra() {
         GlobalScope.launch(Dispatchers.IO) {
+
+            val lista = carritoDao.getAll()
+            if (lista.isEmpty()) {
+                return@launch
+            }
+
+            var total = 0.0
+            for (item in lista) {
+                total += item.precio * item.cantidad
+            }
+
+            val fecha = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
+
+            val compraId = compraDao.insertCompra(
+                CompraRoom(0, fecha, total)
+            ).toInt()
+
+            for (item in lista) {
+                val detalle = CompraDetalleRoom(
+                    0,
+                    compraId,
+                    item.nombre,
+                    item.precio,
+                    item.cantidad,
+                    item.imagen
+                )
+                compraDao.insertDetalles(detalle)
+            }
+
             carritoDao.deleteAll()
+
             withContext(Dispatchers.Main) {
-                cargarCarrito()
+                startActivity(Intent(this@Carrito, HistorialCompras::class.java))
+                finish()
             }
         }
     }

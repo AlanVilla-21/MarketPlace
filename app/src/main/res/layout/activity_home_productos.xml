@@ -11,7 +11,13 @@
         android:layout_height="wrap_content"
         android:hint="Buscar producto"
         android:padding="12dp" />
-    
+
+    <Button
+        android:id="@+id/btnCategorias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categorías" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProductos"
         android:layout_width="match_parent"

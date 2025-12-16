@@ -54,4 +54,6 @@ class CarritoAdapter : RecyclerView.Adapter<CarritoAdapter.CarritoCardViewHolder
         dataCards.addAll(list)
         notifyDataSetChanged()
     }
+
+
 }
