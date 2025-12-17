@@ -62,5 +62,6 @@ class PerfilUsuario : AppCompatActivity() {
             val intentVenderProductos = Intent(this, VenderProductos::class.java)
             startActivity(intentVenderProductos)
         }
+       // binding.btnM
     }
 }

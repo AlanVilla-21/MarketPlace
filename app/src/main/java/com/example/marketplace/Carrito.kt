@@ -104,7 +104,7 @@ class Carrito : AppCompatActivity() {
             carritoDao.deleteAll()
 
             withContext(Dispatchers.Main) {
-                startActivity(Intent(this@Carrito, HistorialCompras::class.java))
+                startActivity(Intent(this@Carrito, PagoTarjeta::class.java))
                 finish()
             }
         }
