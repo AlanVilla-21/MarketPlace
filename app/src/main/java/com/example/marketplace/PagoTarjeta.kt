@@ -17,11 +17,10 @@ class PagoTarjeta : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityPagoTarjetaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        val total = intent.getDoubleExtra("total", 0.0)
+        binding.tvTotal.text = "Total: Bs. $total"
+
         binding.btnPagar.setOnClickListener {
             val numero = binding.etNumeroTarjeta.text.toString().trim()
             val expiracion = binding.etExpiracion.text.toString().trim()

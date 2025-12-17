@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "CompraRoom")
 class CompraRoom(
     @PrimaryKey(autoGenerate = true) val id: Int,
+    @ColumnInfo(name = "uid") val uid: String,
     @ColumnInfo(name = "fecha") val fecha: String,
     @ColumnInfo(name = "total") val total: Double
 )

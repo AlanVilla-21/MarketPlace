@@ -7,11 +7,11 @@ import androidx.room.Query
 @Dao
 interface CompraDao {
 
-    @Query("SELECT * FROM CompraRoom ORDER BY id DESC")
-    fun getAllCompras(): List<CompraRoom>
+    @Query("SELECT * FROM CompraRoom WHERE uid = :uid ORDER BY id DESC")
+    fun getAllCompras(uid: String): List<CompraRoom>
 
-    @Query("SELECT * FROM CompraDetalleRoom WHERE compraId = :compraId")
-    fun getDetalles(compraId: Int): List<CompraDetalleRoom>
+    @Query("SELECT * FROM CompraDetalleRoom WHERE uid = :uid AND compraId = :compraId")
+    fun getDetalles(uid: String, compraId: Int): List<CompraDetalleRoom>
 
     @Insert
     fun insertCompra(compra: CompraRoom): Long

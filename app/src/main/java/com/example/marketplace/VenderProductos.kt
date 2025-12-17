@@ -21,6 +21,8 @@ class VenderProductos : AppCompatActivity() {
 
     private lateinit var binding: ActivityVenderProductosBinding
     private lateinit var productoDao: ProductoDao
+    private var listaImagenes: List<String> = listOf()
+
 
     companion object {
         val DATABASE_NAME: String = "MARKETPLACE_DATABASE"
@@ -30,6 +32,8 @@ class VenderProductos : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVenderProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        cargarSpinnerImagenes()
 
         binding.Menu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
@@ -119,7 +123,6 @@ class VenderProductos : AppCompatActivity() {
         val nombre = binding.etNombre.text.toString().trim()
         val descripcion = binding.etDescripcion.text.toString().trim()
         val precioStr = binding.etPrecio.text.toString().trim()
-
         val categoria = binding.spCategoria.selectedItem.toString()
         val imagen = binding.spImagen.selectedItem.toString()
 
@@ -152,4 +155,49 @@ class VenderProductos : AppCompatActivity() {
             }
         }
     }
+
+    private fun cargarSpinnerImagenes() {
+        GlobalScope.launch(Dispatchers.IO) {
+
+            // Trae todas las imágenes de productos
+            val imagenes = productoDao.getAllImagenes()
+
+            // Quita duplicados y ordena
+            listaImagenes = imagenes.distinct().sorted()
+
+            withContext(Dispatchers.Main) {
+
+                binding.spImagen.adapter = ArrayAdapter(
+                    this@VenderProductos,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    listaImagenes
+                )
+
+                // Si hay al menos una imagen, muestra la primera en preview
+                if (listaImagenes.isNotEmpty()) {
+                    val nombreDrawable = listaImagenes[0]
+                    val idImagen = resources.getIdentifier(nombreDrawable, "drawable", packageName)
+                    if (idImagen != 0) binding.imgPreview.setImageResource(idImagen)
+                }
+
+                // Al cambiar selección, cambia el preview
+                binding.spImagen.onItemSelectedListener =
+                    object : android.widget.AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: android.widget.AdapterView<*>,
+                            view: android.view.View?,
+                            position: Int,
+                            id: Long
+                        ) {
+                            val nombreDrawable = listaImagenes[position]
+                            val idImagen = resources.getIdentifier(nombreDrawable, "drawable", packageName)
+                            if (idImagen != 0) binding.imgPreview.setImageResource(idImagen)
+                        }
+
+                        override fun onNothingSelected(parent: android.widget.AdapterView<*>) {}
+                    }
+            }
+        }
+    }
+
 }

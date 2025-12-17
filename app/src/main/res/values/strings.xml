@@ -33,6 +33,13 @@
 
 
     <string name="historialproducto"> Historial</string>
+    <string name="back">Back</string>
+    <string name="producto">Producto</string>
+    <string name="nombre">Nombre</string>
+    <string name="descripcion">Descripción</string>
+    <string name="precio">Precio</string>
+    <string name="bolivianos">Bs.</string>
+    <string name="imagen">Imagen</string>
 
 
 </resources>

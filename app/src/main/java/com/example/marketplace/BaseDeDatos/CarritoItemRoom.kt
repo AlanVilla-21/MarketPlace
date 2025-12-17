@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "CarritoItemRoom")
 class CarritoItemRoom(
     @PrimaryKey(autoGenerate = true) val id: Int,
+    @ColumnInfo(name = "uid") val uid: String,
     @ColumnInfo(name = "idProducto") val idProducto: Int,
     @ColumnInfo(name = "nombre") val nombre: String,
     @ColumnInfo(name = "precio") val precio: Double,

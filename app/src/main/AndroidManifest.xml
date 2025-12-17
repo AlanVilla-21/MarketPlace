@@ -14,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.MarketPlace" >
-        <activity android:name=".DashboardActivity"
+        <activity android:name=".PagoTarjeta"
             android:exported="false" />
-
+        <activity android:name=".PagoExitoso"
+            android:exported="false" />
         <activity
             android:name=".DetalleCompra"
             android:exported="false" />

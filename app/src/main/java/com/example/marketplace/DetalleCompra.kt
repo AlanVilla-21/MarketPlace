@@ -8,6 +8,7 @@ import com.example.marketplace.BaseDeDatos.CompraDao
 import com.example.marketplace.BaseDeDatos.MarketplaceDataBase
 import com.example.marketplace.adaptadores.CompraDetalleAdapter
 import com.example.marketplace.databinding.ActivityDetalleCompraBinding
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -50,7 +51,8 @@ class DetalleCompra : AppCompatActivity() {
 
     private fun cargarDetalles(compraId: Int) {
         GlobalScope.launch(Dispatchers.IO) {
-            val lista = compraDao.getDetalles(compraId)
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@launch
+            val lista = compraDao.getDetalles(uid ,compraId)
             withContext(Dispatchers.Main) {
                 adapter.addDataCards(lista)
             }

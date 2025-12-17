@@ -89,7 +89,8 @@ class HistorialCompras : AppCompatActivity() {
 
     private fun cargarCompras() {
         GlobalScope.launch(Dispatchers.IO) {
-            val lista = compraDao.getAllCompras()
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@launch
+            val lista = compraDao.getAllCompras(uid)
             withContext(Dispatchers.Main) {
                 adapter.addDataCards(lista)
             }

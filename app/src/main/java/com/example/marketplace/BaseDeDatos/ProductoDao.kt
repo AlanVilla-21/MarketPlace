@@ -16,6 +16,9 @@ interface ProductoDao {
     @Query("SELECT * FROM ProductoRoom WHERE nombre LIKE '%' || :texto || '%'")
     fun buscarPorNombre(texto: String): List<ProductoRoom>
 
+    @Query("SELECT imagen FROM ProductoRoom")
+    fun getAllImagenes(): List<String>
+
     @Insert
     fun insertAll(vararg productos: ProductoRoom)
 }

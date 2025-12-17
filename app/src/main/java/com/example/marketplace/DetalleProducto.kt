@@ -9,6 +9,7 @@ import com.example.marketplace.databinding.ActivityDetalleProductoBinding
 import com.example.marketplace.BaseDeDatos.CarritoDao
 import com.example.marketplace.BaseDeDatos.CarritoItemRoom
 import com.example.marketplace.BaseDeDatos.MarketplaceDataBase
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -60,12 +61,13 @@ class DetalleProducto : AppCompatActivity() {
 
     private fun agregarAlCarrito(idProducto: Int, nombre: String, precio: Double, imagen: String) {
         GlobalScope.launch(Dispatchers.IO) {
-
-            val existente = carritoDao.getByIdProducto(idProducto)
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@launch
+            val existente = carritoDao.getByIdProducto(uid,idProducto)
 
             if (existente == null) {
                 val nuevo = CarritoItemRoom(
                     0,
+                    uid,
                     idProducto,
                     nombre,
                     precio,
@@ -74,7 +76,7 @@ class DetalleProducto : AppCompatActivity() {
                 )
                 carritoDao.insertAll(nuevo)
             } else {
-                carritoDao.updateCantidad(existente.id, existente.cantidad + 1)
+                carritoDao.updateCantidad(uid, existente.id, existente.cantidad + 1)
             }
 
             withContext(Dispatchers.Main) {

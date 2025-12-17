@@ -76,11 +76,20 @@ class Carrito : AppCompatActivity() {
         binding.btnComprar.setOnClickListener {
             realizarCompra()
         }
+        binding.btnVaciar.setOnClickListener {
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@setOnClickListener
+            GlobalScope.launch(Dispatchers.IO) {
+                carritoDao.deleteAll(uid)
+                withContext(Dispatchers.Main) { cargarCarrito() }
+            }
+        }
+
     }
 
     private fun cargarCarrito() {
         GlobalScope.launch(Dispatchers.IO) {
-            val lista = carritoDao.getAll()
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@launch
+            val lista = carritoDao.getAll(uid)
 
             var total = 0.0
             for (item in lista) {
@@ -96,8 +105,8 @@ class Carrito : AppCompatActivity() {
 
     private fun realizarCompra() {
         GlobalScope.launch(Dispatchers.IO) {
-
-            val lista = carritoDao.getAll()
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@launch
+            val lista = carritoDao.getAll(uid)
             if (lista.isEmpty()) {
                 return@launch
             }
@@ -110,12 +119,13 @@ class Carrito : AppCompatActivity() {
             val fecha = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
 
             val compraId = compraDao.insertCompra(
-                CompraRoom(0, fecha, total)
+                CompraRoom(0, uid, fecha, total)
             ).toInt()
 
             for (item in lista) {
                 val detalle = CompraDetalleRoom(
                     0,
+                    uid,
                     compraId,
                     item.nombre,
                     item.precio,
@@ -125,12 +135,16 @@ class Carrito : AppCompatActivity() {
                 compraDao.insertDetalles(detalle)
             }
 
-            carritoDao.deleteAll()
+            carritoDao.deleteAll(uid)
 
             withContext(Dispatchers.Main) {
-                startActivity(Intent(this@Carrito, PagoTarjeta::class.java))
+                val i = Intent(this@Carrito, PagoTarjeta::class.java)
+                i.putExtra("total", total)
+                startActivity(i)
                 finish()
             }
+
+
         }
     }
 }

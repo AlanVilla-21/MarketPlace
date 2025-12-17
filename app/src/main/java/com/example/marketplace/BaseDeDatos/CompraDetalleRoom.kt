@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "CompraDetalleRoom")
 class CompraDetalleRoom(
     @PrimaryKey(autoGenerate = true) val id: Int,
+    @ColumnInfo(name = "uid") val uid: String,
     @ColumnInfo(name = "compraId") val compraId: Int,
     @ColumnInfo(name = "nombre") val nombre: String,
     @ColumnInfo(name = "precio") val precio: Double,
