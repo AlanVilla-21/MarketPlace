@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.marketplace.databinding.ActivityMisComprasBinding
+import androidx.core.view.GravityCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class MisCompras : AppCompatActivity() {
     private lateinit var binding: ActivityMisComprasBinding
@@ -22,6 +24,28 @@ class MisCompras : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        binding.Menu.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        binding.navView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_inicio -> startActivity(Intent(this, HomeProductos::class.java))
+                R.id.nav_vender -> startActivity(Intent(this, VenderProductos::class.java))
+                R.id.nav_compras -> startActivity(Intent(this, HistorialCompras::class.java))
+                R.id.nav_categorias -> startActivity(Intent(this, categorias::class.java))
+                R.id.nav_perfil -> startActivity(Intent(this, PerfilUsuario::class.java))
+                R.id.nav_logout -> {
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(Intent(this, LoginUsuario::class.java))
+                    finish()
+                }
+            }
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+
         binding.btnCasa.setOnClickListener {
             val intentHomeProductos = Intent(this, HomeProductos::class.java)
             startActivity(intentHomeProductos)

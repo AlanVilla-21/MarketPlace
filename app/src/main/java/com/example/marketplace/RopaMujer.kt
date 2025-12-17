@@ -9,11 +9,12 @@ import com.example.marketplace.BaseDeDatos.MarketplaceDataBase
 import com.example.marketplace.BaseDeDatos.ProductoDao
 import com.example.marketplace.adaptadores.ProductoAdapter
 import com.example.marketplace.databinding.ActivityRopamujerBinding
-import com.example.marketplace.databinding.ActivityVehiculosBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.core.view.GravityCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class RopaMujer : AppCompatActivity() {
 
@@ -31,7 +32,24 @@ class RopaMujer : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.Menu.setOnClickListener {
-            startActivity(Intent(this, DashboardActivity::class.java))
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        binding.navView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_inicio -> startActivity(Intent(this, HomeProductos::class.java))
+                R.id.nav_vender -> startActivity(Intent(this, VenderProductos::class.java))
+                R.id.nav_compras -> startActivity(Intent(this, HistorialCompras::class.java))
+                R.id.nav_categorias -> startActivity(Intent(this, categorias::class.java))
+                R.id.nav_perfil -> startActivity(Intent(this, PerfilUsuario::class.java))
+                R.id.nav_logout -> {
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(Intent(this, LoginUsuario::class.java))
+                    finish()
+                }
+            }
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            true
         }
 
 

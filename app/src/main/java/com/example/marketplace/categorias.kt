@@ -7,6 +7,8 @@ import androidx.core.view.ViewCompat
 import android.content.Intent
 import androidx.core.view.WindowInsetsCompat
 import com.example.marketplace.databinding.ActivityCategoriasBinding
+import androidx.core.view.GravityCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class categorias : AppCompatActivity() {
     private lateinit var binding: ActivityCategoriasBinding
@@ -27,7 +29,24 @@ class categorias : AppCompatActivity() {
         //shared preferences o room(implementacion)
         //base de datos si queremos implementar maximo hasta el viernes
         binding.Menu.setOnClickListener {
-            startActivity(Intent(this, DashboardActivity::class.java))
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        binding.navView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_inicio -> startActivity(Intent(this, HomeProductos::class.java))
+                R.id.nav_vender -> startActivity(Intent(this, VenderProductos::class.java))
+                R.id.nav_compras -> startActivity(Intent(this, HistorialCompras::class.java))
+                R.id.nav_categorias -> startActivity(Intent(this, categorias::class.java))
+                R.id.nav_perfil -> startActivity(Intent(this, PerfilUsuario::class.java))
+                R.id.nav_logout -> {
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(Intent(this, LoginUsuario::class.java))
+                    finish()
+                }
+            }
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            true
         }
 
 
