@@ -23,6 +23,11 @@ class PerfilUsuario : AppCompatActivity() {
             insets
 
         }
+
+        binding.Menu.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
+        }
+
         binding.btnVenderProductos.setOnClickListener {
             startActivity(Intent(this, VenderProductos::class.java))
         }

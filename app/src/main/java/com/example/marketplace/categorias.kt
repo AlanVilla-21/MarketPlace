@@ -26,6 +26,9 @@ class categorias : AppCompatActivity() {
         //intentinsets
         //shared preferences o room(implementacion)
         //base de datos si queremos implementar maximo hasta el viernes
+        binding.Menu.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
+        }
 
 
         binding.btnVehiculos.setOnClickListener {

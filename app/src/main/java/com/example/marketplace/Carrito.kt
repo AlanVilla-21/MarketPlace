@@ -36,6 +36,11 @@ class Carrito : AppCompatActivity() {
         binding = ActivityCarritoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        binding.Menu.setOnClickListener {
+//            startActivity(Intent(this, DashboardActivity::class.java))
+//        }
+
+
         val db = Room.databaseBuilder(this, MarketplaceDataBase::class.java, DATABASE_NAME)
             .fallbackToDestructiveMigration()
             .build()

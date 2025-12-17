@@ -3,53 +3,93 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="14dp">
-    
-    <EditText
-        android:id="@+id/etBuscar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Buscar producto"
-        android:padding="12dp" />
+    android:background="@color/white">
 
-    <Button
-        android:id="@+id/btnCategorias"
+    <!-- TOP BAR (Hamburguesa + Buscar) -->
+    <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Categorías" />
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/black"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProductos"
+        <ImageView
+            android:id="@+id/Menu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/treslineas"
+            android:contentDescription="Menu" />
+
+        <EditText
+            android:id="@+id/etBuscar"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:hint="Buscar producto"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@android:color/white"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <!-- CONTENIDO -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="10dp" />
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <Button
+            android:id="@+id/btnCategorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categorías" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProductos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="10dp" />
+
+    </LinearLayout>
+
+    <!-- BOTTOM BAR -->
     <LinearLayout
         android:id="@+id/BotonesAbajo"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="@color/white">
+
         <Button
             android:id="@+id/btnCasa"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/casita"/>
+            android:drawableTop="@drawable/casita" />
+
         <Button
             android:id="@+id/btnCarrito"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/carrito1"/>
+            android:drawableTop="@drawable/carrito1" />
+
         <Button
             android:id="@+id/btnPerfil"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/foto_perfil"/>
+            android:drawableTop="@drawable/foto_perfil" />
     </LinearLayout>
+
 </LinearLayout>

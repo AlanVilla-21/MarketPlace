@@ -30,6 +30,11 @@ class Muebles : AppCompatActivity() {
         binding = ActivityMueblesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.Menu.setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
+        }
+
+
         val db = Room.databaseBuilder(
             this,
             MarketplaceDataBase::class.java,
