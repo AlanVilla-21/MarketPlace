@@ -2,28 +2,24 @@ package com.example.marketplace
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.marketplace.databinding.ActivityMisComprasBinding
 import androidx.core.view.GravityCompat
+import com.example.marketplace.databinding.ActivityDashboardBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class MisCompras : AppCompatActivity() {
-    private lateinit var binding: ActivityMisComprasBinding
+class DashboardActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDashboardBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = ActivityMisComprasBinding.inflate(layoutInflater)
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        auth = FirebaseAuth.getInstance()
+
+        binding.drawerLayout.openDrawer(GravityCompat.START)
 
         binding.Menu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
@@ -37,7 +33,7 @@ class MisCompras : AppCompatActivity() {
                 R.id.nav_categorias -> startActivity(Intent(this, categorias::class.java))
                 R.id.nav_perfil -> startActivity(Intent(this, PerfilUsuario::class.java))
                 R.id.nav_logout -> {
-                    FirebaseAuth.getInstance().signOut()
+                    auth.signOut()
                     startActivity(Intent(this, LoginUsuario::class.java))
                     finish()
                 }
@@ -46,17 +42,9 @@ class MisCompras : AppCompatActivity() {
             true
         }
 
-        binding.btnCasa.setOnClickListener {
-            val intentHomeProductos = Intent(this, HomeProductos::class.java)
-            startActivity(intentHomeProductos)
-        }
-        binding.btnCarrito.setOnClickListener {
-            val intentCarrito = Intent(this, Carrito::class.java)
-            startActivity(intentCarrito)
-        }
-        binding.btnPerfil.setOnClickListener {
-            val intentHistorial = Intent(this, PerfilUsuario::class.java)
-            startActivity(intentHistorial)
-        }
+        // barra inferior
+        binding.btnCasa.setOnClickListener { startActivity(Intent(this, HomeProductos::class.java)) }
+        binding.btnCarrito.setOnClickListener { startActivity(Intent(this, Carrito::class.java)) }
+        binding.btnPerfil.setOnClickListener { startActivity(Intent(this, PerfilUsuario::class.java)) }
     }
 }
