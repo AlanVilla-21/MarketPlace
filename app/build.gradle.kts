@@ -2,20 +2,19 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-   // id("org.jetbrains.kotlin.plugin.serialization")
+    // Implementacion de Serializacion paso 1 (como el docente)
+    kotlin("plugin.serialization") version "2.0.21"
+
+    // Room con KSP (como el docente)
+    id("com.google.devtools.ksp")
+
+    // Firebase
     id("com.google.gms.google-services")
-    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.marketplace"
-    compileSdk {
-        version = release(36)
-    }
-
-     buildFeatures {
-        viewBinding = true
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.marketplace"
@@ -23,7 +22,6 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,13 +34,14 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+    kotlinOptions { jvmTarget = "11" }
+
+    buildFeatures { viewBinding = true }
 }
 
 dependencies {
@@ -51,21 +50,22 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    // serializacion
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
-    //ROOM
-    implementation("androidx.room:room-runtime:2.6.0-alpha01")
-    implementation("androidx.room:room-ktx:2.6.0-alpha01")
-    kapt("androidx.room:room-compiler:2.6.0")
-    //Firebase
+
+    // Implementacion de Serializacion paso 2 (como el docente)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+    // ROOM (como el docente)
+    implementation("androidx.room:room-runtime:2.8.3")
+    implementation("androidx.room:room-ktx:2.8.3")
+    ksp("androidx.room:room-compiler:2.8.3")
+
+    // Coroutines (puedes dejar la tuya si tu docente la usa distinta)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    // Firebase (deja BOM + auth)
     implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
-    implementation("com.google.firebase:firebase-auth-ktx") // This works
+    implementation("com.google.firebase:firebase-auth")
 
-
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-
-    implementation(libs.firebase.auth.ktx)
-    implementation(platform(libs.firebase.bom))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

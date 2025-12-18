@@ -68,12 +68,12 @@ class RopaVaron : AppCompatActivity() {
 
         adapter.setOnClick { producto ->
             val i = Intent(this, DetalleProducto::class.java)
-            i.putExtra("id", producto.id)
+            i.putExtra(DetalleProducto.EXTRA_ID, producto.id)
             i.putExtra("categoria", producto.categoria)
-            i.putExtra("nombre", producto.nombre)
-            i.putExtra("descripcion", producto.descripcion)
-            i.putExtra("precio", producto.precio)
-            i.putExtra("imagen", producto.imagen)
+            i.putExtra(DetalleProducto.EXTRA_NOMBRE, producto.nombre)
+            i.putExtra(DetalleProducto.EXTRA_DESCRIPCION, producto.descripcion)
+            i.putExtra(DetalleProducto.EXTRA_PRECIO, producto.precio)
+            i.putExtra(DetalleProducto.EXTRA_IMAGEN, producto.imagen)
             startActivity(i)
         }
 

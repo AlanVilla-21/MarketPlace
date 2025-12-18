@@ -25,9 +25,7 @@ class categorias : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //intentinsets
-        //shared preferences o room(implementacion)
-        //base de datos si queremos implementar maximo hasta el viernes
+
         binding.Menu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }

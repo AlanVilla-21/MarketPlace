@@ -14,8 +14,7 @@ class PagoExitoso : AppCompatActivity() {
         binding = ActivityPagoExitosoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val total = intent.getDoubleExtra("total", 0.0)
-        binding.tvMensaje.text = "Compra realizada ✅"
+        binding.tvMensaje.text = "Compra realizada"
 
         binding.btnVolverHome.setOnClickListener {
             startActivity(Intent(this, HomeProductos::class.java))

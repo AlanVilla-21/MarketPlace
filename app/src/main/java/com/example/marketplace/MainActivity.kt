@@ -1,17 +1,17 @@
 package com.example.marketplace
 
 import android.os.Bundle
-import android.widget.TextView
-import androidx.core.view.GravityCompat
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
-import com.example.marketplace.R
+import com.example.marketplace.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity (){
-    private lateinit var drawerLayout: DrawerLayout
+class MainActivity : AppCompatActivity() {
 
-    override fun onCreate (savedInstanceState: Bundle?) {
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }

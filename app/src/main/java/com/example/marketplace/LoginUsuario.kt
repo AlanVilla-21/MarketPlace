@@ -1,18 +1,31 @@
 package com.example.marketplace
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.marketplace.databinding.ActivityLoginUsuarioBinding
+import com.example.marketplace.dataclases.UsuarioGuardado
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class LoginUsuario : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginUsuarioBinding
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private val context: Context = this
+
+    companion object {
+        val NOMBRE_FICHERO_SHARED_PREFERENCES = "MarketPlacePrefs"
+        val USUARIO_GUARDADO = "UsuarioGuardadoJson"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +35,10 @@ class LoginUsuario : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        // Auto-login SOLO si ya existe una sesión guardada (usuario previamente logueado)
+        sharedPreferences = context.getSharedPreferences(
+            NOMBRE_FICHERO_SHARED_PREFERENCES, MODE_PRIVATE
+        )
+
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val intent = Intent(this, HomeProductos::class.java)
@@ -45,8 +61,7 @@ class LoginUsuario : AppCompatActivity() {
         }
 
         binding.btnCrearCuenta.setOnClickListener {
-            val intentCrearCuenta = Intent(this, RegisterUsuario::class.java)
-            startActivity(intentCrearCuenta)
+            startActivity(Intent(this, RegisterUsuario::class.java))
         }
     }
 
@@ -54,10 +69,21 @@ class LoginUsuario : AppCompatActivity() {
         auth.signInWithEmailAndPassword(correo, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+
+                    val uid = auth.currentUser?.uid ?: ""
+                    val usuario = UsuarioGuardado(uid, correo)
+                    val usuarioString = Json.encodeToString(usuario)
+
+                    guardarDatosSharedPreferences(
+                        USUARIO_GUARDADO,
+                        usuarioString
+                    )
+
                     val intent = Intent(this, HomeProductos::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
+
                 } else {
                     Toast.makeText(
                         this,
@@ -66,5 +92,15 @@ class LoginUsuario : AppCompatActivity() {
                     ).show()
                 }
             }
+    }
+
+    private fun guardarDatosSharedPreferences(nombreDelDato: String, datoAGuardar: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(nombreDelDato, datoAGuardar)
+        editor.apply()
+    }
+
+    fun obtenerDatosSharedPreferences(nombreDelDato: String): String? {
+        return sharedPreferences.getString(nombreDelDato, "No Existe el Dato almacenado")
     }
 }

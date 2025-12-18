@@ -32,14 +32,12 @@ class VenderProductos : AppCompatActivity() {
         binding = ActivityVenderProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // ✅ Inicializar Room/Dao ANTES de usarlo
         val db = Room.databaseBuilder(this, MarketplaceDataBase::class.java, DATABASE_NAME)
             .fallbackToDestructiveMigration()
             .build()
 
         productoDao = db.productoDao()
 
-        // ✅ Ahora sí cargar imágenes desde DB
         cargarSpinnerImagenes()
 
         binding.Menu.setOnClickListener {

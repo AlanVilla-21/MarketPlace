@@ -22,7 +22,14 @@ class DetalleProducto : AppCompatActivity() {
 
     companion object {
         val DATABASE_NAME: String = "MARKETPLACE_DATABASE"
+
+        val EXTRA_ID = "EXTRA_ID"
+        val EXTRA_NOMBRE = "EXTRA_NOMBRE"
+        val EXTRA_DESCRIPCION = "EXTRA_DESCRIPCION"
+        val EXTRA_PRECIO = "EXTRA_PRECIO"
+        val EXTRA_IMAGEN = "EXTRA_IMAGEN"
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +44,12 @@ class DetalleProducto : AppCompatActivity() {
 
         carritoDao = db.carritoDao()
 
-        val id = intent.getIntExtra("id", 0)
-        val nombre = intent.getStringExtra("nombre") ?: ""
-        val descripcion = intent.getStringExtra("descripcion") ?: ""
-        val precio = intent.getDoubleExtra("precio", 0.0)
-        val imagen = intent.getStringExtra("imagen") ?: ""
+        val id = intent.getIntExtra(EXTRA_ID, 0)
+        val nombre = intent.getStringExtra(EXTRA_NOMBRE) ?: ""
+        val descripcion = intent.getStringExtra(EXTRA_DESCRIPCION) ?: ""
+        val precio = intent.getDoubleExtra(EXTRA_PRECIO, 0.0)
+        val imagen = intent.getStringExtra(EXTRA_IMAGEN) ?: ""
+
 
         binding.tvNombreDetalle.text = nombre
         binding.tvDescripcionDetalle.text = descripcion
