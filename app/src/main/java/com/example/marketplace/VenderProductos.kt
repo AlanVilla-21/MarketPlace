@@ -5,24 +5,23 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.room.Room
 import com.example.marketplace.BaseDeDatos.MarketplaceDataBase
 import com.example.marketplace.BaseDeDatos.ProductoDao
 import com.example.marketplace.BaseDeDatos.ProductoRoom
 import com.example.marketplace.databinding.ActivityVenderProductosBinding
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import androidx.core.view.GravityCompat
-import com.google.firebase.auth.FirebaseAuth
 
 class VenderProductos : AppCompatActivity() {
 
     private lateinit var binding: ActivityVenderProductosBinding
     private lateinit var productoDao: ProductoDao
     private var listaImagenes: List<String> = listOf()
-
 
     companion object {
         val DATABASE_NAME: String = "MARKETPLACE_DATABASE"
@@ -33,6 +32,14 @@ class VenderProductos : AppCompatActivity() {
         binding = ActivityVenderProductosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // ✅ Inicializar Room/Dao ANTES de usarlo
+        val db = Room.databaseBuilder(this, MarketplaceDataBase::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
+
+        productoDao = db.productoDao()
+
+        // ✅ Ahora sí cargar imágenes desde DB
         cargarSpinnerImagenes()
 
         binding.Menu.setOnClickListener {
@@ -42,13 +49,15 @@ class VenderProductos : AppCompatActivity() {
         binding.navView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_inicio -> startActivity(Intent(this, HomeProductos::class.java))
-                R.id.nav_vender -> startActivity(Intent(this, VenderProductos::class.java))
+                R.id.nav_vender -> { /* ya estás en vender */ }
                 R.id.nav_compras -> startActivity(Intent(this, HistorialCompras::class.java))
                 R.id.nav_categorias -> startActivity(Intent(this, categorias::class.java))
                 R.id.nav_perfil -> startActivity(Intent(this, PerfilUsuario::class.java))
                 R.id.nav_logout -> {
                     FirebaseAuth.getInstance().signOut()
-                    startActivity(Intent(this, LoginUsuario::class.java))
+                    val intent = Intent(this, LoginUsuario::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                     finish()
                 }
             }
@@ -57,25 +66,15 @@ class VenderProductos : AppCompatActivity() {
         }
 
         binding.btnCasa.setOnClickListener {
-            val intentHomeProductos = Intent(this, HomeProductos::class.java)
-            startActivity(intentHomeProductos)
+            startActivity(Intent(this, HomeProductos::class.java))
         }
         binding.btnCarrito.setOnClickListener {
-            val intentCarrito = Intent(this, Carrito::class.java)
-            startActivity(intentCarrito)
+            startActivity(Intent(this, Carrito::class.java))
         }
         binding.btnPerfil.setOnClickListener {
-            val intentHistorial = Intent(this, PerfilUsuario::class.java)
-            startActivity(intentHistorial)
+            startActivity(Intent(this, PerfilUsuario::class.java))
         }
 
-        val db = Room.databaseBuilder(this, MarketplaceDataBase::class.java, DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-
-        productoDao = db.productoDao()
-
-        // Categorías exactamente como las usas en el seed y en los botones
         val categorias = listOf(
             "Vehiculos",
             "Ropa de Mujer",
@@ -88,8 +87,6 @@ class VenderProductos : AppCompatActivity() {
             "Deportes"
         )
 
-        // Imágenes: nombres de drawables (DEBEN existir en /drawable)
-        // Puedes reemplazar esta lista por tus drawables reales.
         val imagenes = listOf(
             "toyota_corolla",
             "suzuki_swift",
@@ -108,6 +105,7 @@ class VenderProductos : AppCompatActivity() {
             categorias
         )
 
+        // Si todavía no hay imágenes en DB, dejamos un fallback para que puedas elegir igual
         binding.spImagen.adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_dropdown_item,
@@ -158,46 +156,38 @@ class VenderProductos : AppCompatActivity() {
 
     private fun cargarSpinnerImagenes() {
         GlobalScope.launch(Dispatchers.IO) {
-
-            // Trae todas las imágenes de productos
             val imagenes = productoDao.getAllImagenes()
-
-            // Quita duplicados y ordena
             listaImagenes = imagenes.distinct().sorted()
 
             withContext(Dispatchers.Main) {
-
-                binding.spImagen.adapter = ArrayAdapter(
-                    this@VenderProductos,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    listaImagenes
-                )
-
-                // Si hay al menos una imagen, muestra la primera en preview
                 if (listaImagenes.isNotEmpty()) {
+                    binding.spImagen.adapter = ArrayAdapter(
+                        this@VenderProductos,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        listaImagenes
+                    )
+
                     val nombreDrawable = listaImagenes[0]
                     val idImagen = resources.getIdentifier(nombreDrawable, "drawable", packageName)
                     if (idImagen != 0) binding.imgPreview.setImageResource(idImagen)
-                }
 
-                // Al cambiar selección, cambia el preview
-                binding.spImagen.onItemSelectedListener =
-                    object : android.widget.AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: android.widget.AdapterView<*>,
-                            view: android.view.View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            val nombreDrawable = listaImagenes[position]
-                            val idImagen = resources.getIdentifier(nombreDrawable, "drawable", packageName)
-                            if (idImagen != 0) binding.imgPreview.setImageResource(idImagen)
+                    binding.spImagen.onItemSelectedListener =
+                        object : android.widget.AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(
+                                parent: android.widget.AdapterView<*>,
+                                view: android.view.View?,
+                                position: Int,
+                                id: Long
+                            ) {
+                                val nombre = listaImagenes[position]
+                                val imgId = resources.getIdentifier(nombre, "drawable", packageName)
+                                if (imgId != 0) binding.imgPreview.setImageResource(imgId)
+                            }
+
+                            override fun onNothingSelected(parent: android.widget.AdapterView<*>) {}
                         }
-
-                        override fun onNothingSelected(parent: android.widget.AdapterView<*>) {}
-                    }
+                }
             }
         }
     }
-
 }

@@ -9,7 +9,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pago con tarjeta"
+            android:text="@string/pago_con_tarjeta"
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_marginBottom="12dp" />
@@ -18,7 +18,7 @@
             android:id="@+id/tvTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total: Bs. 0"
+            android:text="@string/total_bs_0"
             android:textSize="16sp"
             android:layout_marginBottom="16dp"/>
 
@@ -26,7 +26,7 @@
             android:id="@+id/etNombreTitular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre del titular"
+            android:hint="@string/nombre_del_titular"
             android:inputType="textPersonName"
             android:layout_marginBottom="10dp"/>
 
@@ -34,7 +34,7 @@
             android:id="@+id/etNumeroTarjeta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Número de tarjeta"
+            android:hint="@string/n_mero_de_tarjeta"
             android:inputType="number"
             android:maxLength="19"
             android:layout_marginBottom="10dp"/>
@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="MM/AA"
+                android:hint="@string/mm_aa"
                 android:inputType="text"
                 android:maxLength="5"
                 android:layout_marginEnd="8dp"/>
@@ -59,7 +59,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="CVV"
+                android:hint="@string/cvv"
                 android:inputType="numberPassword"
                 android:maxLength="4"/>
         </LinearLayout>
@@ -68,13 +68,13 @@
             android:id="@+id/btnPagar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pagar"
+            android:text="@string/pagar"
             android:layout_marginTop="18dp"/>
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancelar"
+            android:text="@string/cancelar"
             android:layout_marginTop="8dp"/>
     </LinearLayout>

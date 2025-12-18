@@ -26,7 +26,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/treslineas"
-                android:contentDescription="Menu" />
+                android:contentDescription="@string/menu" />
 
             <EditText
                 android:id="@+id/etBuscar"
@@ -34,7 +34,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
-                android:hint="Buscar producto"
+                android:hint="@string/buscar_producto"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:background="@android:color/white"
@@ -52,7 +52,7 @@
                 android:id="@+id/btnCategorias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Categorías" />
+                android:text="@string/categoria" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvProductos"
@@ -64,6 +64,7 @@
 
         <LinearLayout
             android:id="@+id/BotonesAbajo"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal"
@@ -71,6 +72,7 @@
 
             <Button
                 android:id="@+id/btnCasa"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -79,6 +81,7 @@
 
             <Button
                 android:id="@+id/btnCarrito"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -87,6 +90,7 @@
 
             <Button
                 android:id="@+id/btnPerfil"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

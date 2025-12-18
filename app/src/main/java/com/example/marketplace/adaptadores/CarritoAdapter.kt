@@ -24,7 +24,7 @@ class CarritoAdapter : RecyclerView.Adapter<CarritoAdapter.CarritoCardViewHolder
     }
 
     override fun onBindViewHolder(holder: CarritoCardViewHolder, position: Int) {
-        holder.binding(dataCards[position])
+        holder.bind(dataCards[position])
     }
 
     override fun getItemCount(): Int = dataCards.size
@@ -32,21 +32,20 @@ class CarritoAdapter : RecyclerView.Adapter<CarritoAdapter.CarritoCardViewHolder
     inner class CarritoCardViewHolder(private val binding: ItemCarritoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun binding(data: CarritoItemRoom) {
+        fun bind(data: CarritoItemRoom) {
 
             binding.tvNombreCarrito.text = data.nombre
+
             binding.tvCantidadCarrito.text = "Cantidad: ${data.cantidad}"
-            binding.tvPrecioCarrito.text = "Bs. ${data.precio * data.cantidad}"
+
+            val totalItem = data.precio * data.cantidad
+            binding.tvPrecioCarrito.text = "Bs. $totalItem"
 
             val idImagen = context?.resources?.getIdentifier(data.imagen, "drawable", context?.packageName)
             if (idImagen != null && idImagen != 0) {
                 binding.imgCarrito.setImageResource(idImagen)
             }
-
-            manejoDeDatos()
         }
-
-        fun manejoDeDatos() {}
     }
 
     fun addDataCards(list: List<CarritoItemRoom>) {
@@ -54,6 +53,4 @@ class CarritoAdapter : RecyclerView.Adapter<CarritoAdapter.CarritoCardViewHolder
         dataCards.addAll(list)
         notifyDataSetChanged()
     }
-
-
 }

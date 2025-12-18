@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import androidx.core.view.GravityCompat
 import com.google.firebase.auth.FirebaseAuth
-
+import androidx.recyclerview.widget.GridLayoutManager
 
 class HomeProductos : AppCompatActivity() {
 
@@ -40,14 +40,16 @@ class HomeProductos : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_inicio -> startActivity(Intent(this, HomeProductos::class.java))
+                R.id.nav_inicio -> { /* ya estás en Home */ }
                 R.id.nav_vender -> startActivity(Intent(this, VenderProductos::class.java))
                 R.id.nav_compras -> startActivity(Intent(this, HistorialCompras::class.java))
                 R.id.nav_categorias -> startActivity(Intent(this, categorias::class.java))
                 R.id.nav_perfil -> startActivity(Intent(this, PerfilUsuario::class.java))
                 R.id.nav_logout -> {
                     FirebaseAuth.getInstance().signOut()
-                    startActivity(Intent(this, LoginUsuario::class.java))
+                    val i = Intent(this, LoginUsuario::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
                     finish()
                 }
             }
@@ -55,17 +57,14 @@ class HomeProductos : AppCompatActivity() {
             true
         }
 
-
-        val db = Room.databaseBuilder(
-            this,
-            MarketplaceDataBase::class.java,
-            DATABASE_NAME
-        ).fallbackToDestructiveMigration()
+        val db = Room.databaseBuilder(this, MarketplaceDataBase::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration()
             .build()
 
         productoDao = db.productoDao()
 
         adapter = ProductoAdapter()
+        binding.rvProductos.layoutManager = GridLayoutManager(this, 2)
         binding.rvProductos.adapter = adapter
 
         adapter.setOnClick { producto ->
@@ -79,13 +78,11 @@ class HomeProductos : AppCompatActivity() {
             startActivity(i)
         }
 
-        binding.rvProductos.layoutManager = LinearLayoutManager(this)
-        binding.rvProductos.adapter = adapter
-
         seedProductosSiHaceFalta()
 
         binding.etBuscar.doAfterTextChanged {
-            buscar(it.toString())
+            val nombre = it.toString()
+            buscar(nombre)
         }
 
         binding.btnCategorias.setOnClickListener {
@@ -93,25 +90,22 @@ class HomeProductos : AppCompatActivity() {
         }
 
         binding.btnPerfil.setOnClickListener {
-            val intentPerfil = Intent(this, PerfilUsuario::class.java)
-            startActivity(intentPerfil)
-        }
-        binding.btnCasa.setOnClickListener {
-            val intentHomeProductos = Intent(this, HomeProductos::class.java)
-            startActivity(intentHomeProductos)
-        }
-        binding.btnCarrito.setOnClickListener {
-            val intentCarrito = Intent(this, Carrito::class.java)
-            startActivity(intentCarrito)
+            startActivity(Intent(this, PerfilUsuario::class.java))
         }
 
+        binding.btnCasa.setOnClickListener {
+            cargarProductos()
+        }
+
+        binding.btnCarrito.setOnClickListener {
+            startActivity(Intent(this, Carrito::class.java))
+        }
     }
 
     override fun onResume() {
         super.onResume()
         cargarProductos()
     }
-
 
     private fun cargarProductos() {
         GlobalScope.launch(Dispatchers.IO) {
@@ -139,12 +133,9 @@ class HomeProductos : AppCompatActivity() {
 
         GlobalScope.launch(Dispatchers.IO) {
 
-            val existentes: List<ProductoRoom> = productoDao.getAll()
-            val categoriasExistentes = existentes.map { it.categoria }.toSet()
-
             val lista = ArrayList<ProductoRoom>()
 
-            if (!categoriasExistentes.contains("Vehiculos")) {
+            if (productoDao.countByCategoria("Vehiculos") == 0) {
                 lista.add(ProductoRoom(0,"Vehiculos","Toyota Corolla","Vehículo en buen estado",1000.0,"toyota_corolla"))
                 lista.add(ProductoRoom(0,"Vehiculos","Suzuki Swift","Económico y práctico",1200.0,"suzuki_swift"))
                 lista.add(ProductoRoom(0,"Vehiculos","Nissan Note","Ideal para ciudad",900.0,"nissan_note"))
@@ -153,7 +144,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Vehiculos","Bicicleta MTB","Todo terreno",300.0,"bicicleta_mtb"))
             }
 
-            if (!categoriasExistentes.contains("Ropa de varón")) {
+            if (productoDao.countByCategoria("Ropa de varón") == 0) {
                 lista.add(ProductoRoom(0,"Ropa de varón","Zapatos Oxford","Talla 42",350.0,"zapatos_oxford"))
                 lista.add(ProductoRoom(0,"Ropa de varón","Camisa Formal","Camisa blanca",120.0,"camisa_formal"))
                 lista.add(ProductoRoom(0,"Ropa de varón","Pantalón Jeans","Jeans azul",100.0,"pantalon_jeans"))
@@ -162,8 +153,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Ropa de varón","Zapatillas","Urbanas",180.0,"zapatillas_urbanas"))
             }
 
-            if (!categoriasExistentes.contains("Ropa de Mujer")) {
-                // pon tus 6 drawables reales
+            if (productoDao.countByCategoria("Ropa de Mujer") == 0) {
                 lista.add(ProductoRoom(0,"Ropa de Mujer","Vestido","Vestido casual",180.0,"vestido"))
                 lista.add(ProductoRoom(0,"Ropa de Mujer","Blusa","Blusa cómoda",90.0,"blusa"))
                 lista.add(ProductoRoom(0,"Ropa de Mujer","Falda","Falda negra",110.0,"falda"))
@@ -172,7 +162,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Ropa de Mujer","Chaqueta Mujer","Abrigo ligero",220.0,"chaqueta_mujer"))
             }
 
-            if (!categoriasExistentes.contains("Electronica")) {
+            if (productoDao.countByCategoria("Electronica") == 0) {
                 lista.add(ProductoRoom(0,"Electronica","Audífonos","Bluetooth",120.0,"audifonos"))
                 lista.add(ProductoRoom(0,"Electronica","Mouse","Inalámbrico",80.0,"mouse"))
                 lista.add(ProductoRoom(0,"Electronica","Teclado","Mecánico",200.0,"teclado"))
@@ -181,7 +171,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Electronica","Laptop","Para estudio",3500.0,"laptop"))
             }
 
-            if (!categoriasExistentes.contains("Muebles")) {
+            if (productoDao.countByCategoria("Muebles") == 0) {
                 lista.add(ProductoRoom(0,"Muebles","Silla","Silla cómoda",120.0,"silla"))
                 lista.add(ProductoRoom(0,"Muebles","Mesa","Mesa de comedor",400.0,"mesa"))
                 lista.add(ProductoRoom(0,"Muebles","Sofá","Sofá 3 plazas",900.0,"sofa"))
@@ -190,7 +180,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Muebles","Estante","Estante madera",250.0,"estante"))
             }
 
-            if (!categoriasExistentes.contains("Alquileres")) {
+            if (productoDao.countByCategoria("Alquileres") == 0) {
                 lista.add(ProductoRoom(0,"Alquileres","Departamento","Sopocachi",2500.0,"departamento"))
                 lista.add(ProductoRoom(0,"Alquileres","Habitación","Centro",900.0,"habitacion"))
                 lista.add(ProductoRoom(0,"Alquileres","Casa","Achumani",4000.0,"casa"))
@@ -199,7 +189,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Alquileres","Local","Comercial",3500.0,"local"))
             }
 
-            if (!categoriasExistentes.contains("Instrumentos")) {
+            if (productoDao.countByCategoria("Instrumentos") == 0) {
                 lista.add(ProductoRoom(0,"Instrumentos","Guitarra","Acústica",500.0,"guitarra"))
                 lista.add(ProductoRoom(0,"Instrumentos","Teclado","61 teclas",900.0,"teclado_musical"))
                 lista.add(ProductoRoom(0,"Instrumentos","Batería","Batería básica",2500.0,"bateria"))
@@ -208,7 +198,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Instrumentos","Micrófono","Con base",180.0,"microfono"))
             }
 
-            if (!categoriasExistentes.contains("Ropa de Bebe")) {
+            if (productoDao.countByCategoria("Ropa de Bebe") == 0) {
                 lista.add(ProductoRoom(0,"Ropa de Bebe","Body","Algodón",60.0,"body_bebe"))
                 lista.add(ProductoRoom(0,"Ropa de Bebe","Pijama","Calientito",80.0,"pijama_bebe"))
                 lista.add(ProductoRoom(0,"Ropa de Bebe","Gorro","Suave",25.0,"gorro_bebe"))
@@ -217,7 +207,7 @@ class HomeProductos : AppCompatActivity() {
                 lista.add(ProductoRoom(0,"Ropa de Bebe","Conjunto","2 piezas",110.0,"conjunto_bebe"))
             }
 
-            if (!categoriasExistentes.contains("Deportes")) {
+            if (productoDao.countByCategoria("Deportes") == 0) {
                 lista.add(ProductoRoom(0,"Deportes","Balón","Fútbol",80.0,"balon"))
                 lista.add(ProductoRoom(0,"Deportes","Guantes","Box",120.0,"guantes_box"))
                 lista.add(ProductoRoom(0,"Deportes","Mancuernas","Par 10kg",200.0,"mancuernas"))
@@ -227,9 +217,7 @@ class HomeProductos : AppCompatActivity() {
             }
 
             if (lista.isNotEmpty()) {
-                for (p in lista) {
-                    productoDao.insertAll(p)
-                }
+                productoDao.insertLista(lista) // ✅ ignora duplicados por UNIQUE + IGNORE
             }
 
             withContext(Dispatchers.Main) {
@@ -238,4 +226,3 @@ class HomeProductos : AppCompatActivity() {
         }
     }
 }
-

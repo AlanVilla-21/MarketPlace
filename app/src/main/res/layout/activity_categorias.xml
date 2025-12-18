@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/categoria"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/white" />
     </LinearLayout>
@@ -49,11 +49,14 @@
 
     <LinearLayout
         android:id="@+id/fila1"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnVehiculos"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -63,9 +66,11 @@
             android:background="@android:color/transparent"
             android:textColor="@color/black"
             android:drawableTop="@drawable/vehiculos"
-            android:textSize="13dp"/>
+            android:textSize="13sp" />
+
         <Button
             android:id="@+id/btnRopa_de_mujer"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -75,9 +80,11 @@
             android:background="@android:color/transparent"
             android:textColor="@color/black"
             android:drawableTop="@drawable/mujer"
-            android:textSize="13dp"/>
+            android:textSize="13sp" />
+
         <Button
             android:id="@+id/btnElectronica"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -87,41 +94,48 @@
             android:background="@android:color/transparent"
             android:textColor="@color/black"
             android:drawableTop="@drawable/electronica"
-            android:textSize="13dp"/>
+            android:textSize="13sp"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila2"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnMuebles"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/categoria4"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"
-            android:drawableTop="@drawable/sofa"
-            android:textSize="13dp"/>
-        <Button
-            android:id="@+id/btnRopa_de_varon"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/categoria5"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"
-            android:drawableTop="@drawable/ropadevaron"
-            android:textSize="13dp"/>
-        <Button
-            android:id="@+id/btnAlquileres"
-            android:layout_width="0dp"
+
+            <Button
+                android:id="@+id/btnMuebles"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/categoria4"
+                android:gravity="center"
+                android:paddingVertical="16dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:drawableTop="@drawable/sofa"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnRopa_de_varon"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/categoria5"
+                android:gravity="center"
+                android:paddingVertical="16dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:drawableTop="@drawable/ropadevaron"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnAlquileres"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/categoria6"
@@ -130,42 +144,48 @@
             android:background="@android:color/transparent"
             android:textColor="@color/black"
             android:drawableTop="@drawable/alquileres"
-            android:textSize="13dp"/>
+            android:textSize="13sp"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila3"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnInstrumentos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/categoria7"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"
-            android:drawableTop="@drawable/instrumentos"
-            android:textSize="13dp"/>
-        <Button
-            android:id="@+id/btnRopa_de_bebe"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/categoria8"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:background="@android:color/transparent"
-            android:textColor="@color/black"
-            android:drawableTop="@drawable/ropadebebe"
-            android:textSize="13dp"/>
-        <Button
-            android:id="@+id/btndeportes"
-            android:layout_width="0dp"
+            <Button
+                android:id="@+id/btnInstrumentos"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/categoria7"
+                android:gravity="center"
+                android:paddingVertical="16dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:drawableTop="@drawable/instrumentos"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnRopa_de_bebe"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/categoria8"
+                android:gravity="center"
+                android:paddingVertical="16dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:drawableTop="@drawable/ropadebebe"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btndeportes"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/categoria9"
@@ -174,12 +194,13 @@
             android:background="@android:color/transparent"
             android:textColor="@color/black"
             android:drawableTop="@drawable/deportes"
-            android:textSize="13dp"/>
+            android:textSize="13sp"/>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/BotonesAbajo"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:orientation="horizontal"
@@ -187,22 +208,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <Button
             android:id="@+id/btnCasa"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/casita"/>
+            android:drawableTop="@drawable/casita" />
+
         <Button
             android:id="@+id/btnCarrito"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/carrito1"/>
+            android:drawableTop="@drawable/carrito1" />
+
         <Button
             android:id="@+id/btnPerfil"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

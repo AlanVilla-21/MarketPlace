@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/nav_inicio" android:title="Inicio" />
-    <item android:id="@+id/nav_vender" android:title="Vender" />
-    <item android:id="@+id/nav_compras" android:title="Historial" />
-    <item android:id="@+id/nav_categorias" android:title="Categorias" />
-    <item android:id="@+id/nav_perfil" android:title="Perfil" />
-    <item android:id="@+id/nav_logout" android:title="Cerrar Sesión" />
+    <item android:id="@+id/nav_inicio" android:title="@string/inicio" />
+    <item android:id="@+id/nav_vender" android:title="@string/vender" />
+    <item android:id="@+id/nav_compras" android:title="@string/historial" />
+    <item android:id="@+id/nav_categorias" android:title="@string/categorias" />
+    <item android:id="@+id/nav_perfil" android:title="@string/perfil" />
+    <item android:id="@+id/nav_logout" android:title="@string/cerrar_sesion" />
 
 </menu>

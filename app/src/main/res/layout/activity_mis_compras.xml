@@ -34,12 +34,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="@string/mis_compras"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="@color/white" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/BotonesAbajo"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:orientation="horizontal"
@@ -47,22 +48,28 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
+
             <Button
                 android:id="@+id/btnCasa"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:drawableTop="@drawable/casita"/>
+                android:drawableTop="@drawable/casita" />
+
             <Button
                 android:id="@+id/btnCarrito"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:drawableTop="@drawable/carrito1"/>
+                android:drawableTop="@drawable/carrito1" />
+
             <Button
                 android:id="@+id/btnPerfil"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

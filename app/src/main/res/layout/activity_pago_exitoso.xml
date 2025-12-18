@@ -11,7 +11,7 @@
         android:id="@+id/tvMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Compra realizada ✅"
+        android:text="@string/compra_realizada"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -21,5 +21,5 @@
         android:id="@+id/btnVolverHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver al inicio"/>
+        android:text="@string/volver_al_inicio"/>
 </LinearLayout>
