@@ -184,7 +184,7 @@ class HomeProductos : AppCompatActivity() {
             if (!categoriasExistentes.contains("Muebles")) {
                 lista.add(ProductoRoom(0,"Muebles","Silla","Silla cómoda",120.0,"silla"))
                 lista.add(ProductoRoom(0,"Muebles","Mesa","Mesa de comedor",400.0,"mesa"))
-                lista.add(ProductoRoom(0,"Muebles","Sofá","Sofá 3 plazas",900.0,"sofa"))
+                lista.add(ProductoRoom(0,"Muebles","Sofá","Sofá 3 plazas",900.0,"sofa1"))
                 lista.add(ProductoRoom(0,"Muebles","Cama","Cama 2 plazas",1200.0,"cama"))
                 lista.add(ProductoRoom(0,"Muebles","Lámpara","Lámpara de mesa",90.0,"lampara"))
                 lista.add(ProductoRoom(0,"Muebles","Estante","Estante madera",250.0,"estante"))
